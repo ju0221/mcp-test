@@ -1,0 +1,445 @@
+/* =============================================
+   Design Tokens
+=============================================== */
+:root {
+  --color-primary:       #FF5050;
+  --color-primary-light: #FFF5F5;
+  --color-primary-hover: #E63E3E;
+  --color-text:          #333333;
+  --color-text-label:    #616161;
+  --color-text-muted:    #888888;
+  --color-text-dash:     #424242;
+  --color-border:        #F0F0F0;
+  --color-white:         #FFFFFF;
+  --color-black:         #000000;
+
+  --font: 'Spoqa Han Sans Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+  --tracking: -0.25px;
+
+  --radius-btn: 12px;
+  --radius-tag: 8px;
+
+  --side-padding: 20px;
+}
+
+/* =============================================
+   Reset
+=============================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--color-white);
+  color: var(--color-text);
+  min-height: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* =============================================
+   Page Layout
+=============================================== */
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  min-height: 100vh;
+}
+
+.page-inner {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* =============================================
+   Header
+=============================================== */
+.header {
+  flex-shrink: 0;
+  background: var(--color-white);
+}
+
+.header__top {
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px 12px 16px;
+}
+
+.header__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 4px 4px 0;
+  color: var(--color-primary);
+  font-family: var(--font);
+  font-size: 12px;
+  letter-spacing: var(--tracking);
+  line-height: 18px;
+  border-radius: 4px;
+  transition: opacity 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.header__back:hover        { opacity: 0.7; }
+.header__back:active       { opacity: 0.45; }
+.header__back:focus-visible {
+  outline: 2px solid rgba(255, 80, 80, 0.5);
+  outline-offset: 2px;
+}
+
+.header__back-icon {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header__call {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font);
+  font-size: 12px;
+  color: var(--color-primary);
+  letter-spacing: var(--tracking);
+  line-height: 18px;
+  padding: 4px 2px;
+  border-radius: 4px;
+  transition: opacity 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.header__call:hover        { opacity: 0.7; }
+.header__call:active       { opacity: 0.45; }
+.header__call:focus-visible {
+  outline: 2px solid rgba(255, 80, 80, 0.5);
+  outline-offset: 2px;
+}
+
+.header__end-btn {
+  height: 28px;
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  border: none;
+  border-radius: var(--radius-tag);
+  padding: 0 8px;
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: var(--tracking);
+  line-height: 18px;
+  cursor: pointer;
+  transition: background 0.15s;
+  white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+}
+.header__end-btn:hover        { background: #FFE0E0; }
+.header__end-btn:active       { background: #FFCBCB; }
+.header__end-btn:focus-visible {
+  outline: 2px solid rgba(255, 80, 80, 0.5);
+  outline-offset: 2px;
+}
+
+.header__title-row {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  padding: 8px 12px 12px var(--side-padding);
+}
+
+.header__title {
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--color-black);
+  letter-spacing: var(--tracking);
+  line-height: 28px;
+}
+
+/* =============================================
+   Tab Bar
+=============================================== */
+.tab-bar {
+  height: 60px;
+  border-bottom: 4px solid var(--color-border);
+  display: flex;
+  align-items: flex-end;
+  padding: 16px var(--side-padding) 0;
+  gap: 20px;
+  flex-shrink: 0;
+}
+
+.tab-item {
+  height: 36px;
+  border: none;
+  border-bottom: 4px solid transparent;
+  margin-bottom: -4px;
+  background: none;
+  cursor: pointer;
+  font-family: var(--font);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  letter-spacing: var(--tracking);
+  line-height: 24px;
+  padding: 0 2px;
+  transition: color 0.15s, border-color 0.15s;
+  white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+}
+.tab-item:hover:not(.is-active) { color: #555; }
+.tab-item:focus-visible {
+  outline: 2px solid rgba(51, 51, 51, 0.35);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+.tab-item.is-active {
+  font-weight: 700;
+  color: var(--color-text);
+  border-bottom-color: var(--color-text);
+}
+
+/* =============================================
+   Content Area
+=============================================== */
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px var(--side-padding);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* =============================================
+   Field Group & Field
+=============================================== */
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.field__label {
+  display: block;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--color-text-label);
+  letter-spacing: var(--tracking);
+  line-height: 18px;
+}
+
+.field__hint {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--color-text-label);
+  letter-spacing: var(--tracking);
+  line-height: 18px;
+  margin-top: 8px;
+}
+
+/* =============================================
+   Input Wrapper
+=============================================== */
+.input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 48px;
+  border-bottom: 1px solid var(--color-border);
+  transition: border-color 0.2s;
+  gap: 10px;
+  padding: 10px 0;
+  overflow: hidden;
+}
+
+/* Focus: border → #FF5050 */
+.input-wrap:focus-within {
+  border-color: var(--color-primary);
+}
+
+/* Error state */
+.input-wrap.is-error {
+  border-color: var(--color-primary);
+}
+
+.input {
+  flex: 1;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--font);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color-text);
+  letter-spacing: var(--tracking);
+  line-height: 24px;
+  padding: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  min-width: 0;
+}
+.input::placeholder {
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+.input[type="password"] {
+  letter-spacing: 3px;
+}
+.input[type="password"]::placeholder {
+  letter-spacing: var(--tracking);
+}
+
+/* =============================================
+   Clear (Erase) Button
+=============================================== */
+.input-clear {
+  display: none;          /* hidden by default */
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* show only when parent is focused AND input has value (.has-value) */
+.input-wrap:focus-within .input-clear.is-visible {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-clear:hover  { color: var(--color-text); }
+.input-clear:active { color: var(--color-text); }
+
+/* =============================================
+   Split Input (주민등록번호)
+=============================================== */
+.input-split {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.input-split .input-wrap {
+  flex: 1;
+  min-width: 0;
+}
+
+.input-split__dash {
+  width: 25px;
+  flex-shrink: 0;
+  text-align: center;
+  font-size: 14px;
+  color: var(--color-text-dash);
+  line-height: 40px;
+  user-select: none;
+}
+
+/* =============================================
+   Info / Note Text
+=============================================== */
+.info-text {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.info-text__bullet {
+  width: 2px;
+  height: 2px;
+  min-width: 2px;
+  border-radius: 50%;
+  background: var(--color-text-label);
+  margin-top: 8px;
+  flex-shrink: 0;
+}
+
+.info-text__body {
+  flex: 1;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--color-text-label);
+  letter-spacing: var(--tracking);
+  line-height: 18px;
+}
+
+/* =============================================
+   Fixed Bottom Area & Button
+=============================================== */
+.fixed-area {
+  flex-shrink: 0;
+  padding: 20px var(--side-padding) 24px;
+  background: var(--color-white);
+}
+
+.btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 52px;
+  background: var(--color-primary);
+  color: var(--color-white);
+  border: none;
+  border-radius: var(--radius-btn);
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: var(--tracking);
+  line-height: 16px;
+  cursor: pointer;
+  transition: background 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.btn-primary:hover { background: var(--color-primary-hover); }
+.btn-primary:focus-visible {
+  outline: 3px solid rgba(255, 80, 80, 0.45);
+  outline-offset: 3px;
+}
+.btn-primary:disabled {
+  background: var(--color-border);
+  color: var(--color-text-muted);
+  cursor: not-allowed;
+}
+
+/* =============================================
+   Responsive
+=============================================== */
+
+@media (min-width: 960px) {
+  :root { --side-padding: 40px; }
+  .header__title { font-size: 24px; }
+  .tab-item      { font-size: 17px; }
+  .input         { font-size: 17px; }
+}
