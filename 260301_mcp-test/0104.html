@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>0104 사용자 인증 — 개인 주민번호 (입력)</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/spoqa-han-sans@2.1.1/css/SpoqaHanSansNeo.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="page">
+  <div class="page-inner">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="header__top">
+        <button class="header__back" type="button">
+          <span class="header__back-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M12.5 5L7.5 10L12.5 15" stroke="#FF5050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          뒤로가기
+        </button>
+        <div class="header__actions">
+          <button class="header__call" type="button">상담사연결</button>
+          <button class="header__end-btn" type="button">통화종료</button>
+        </div>
+      </div>
+      <div class="header__title-row">
+        <h1 class="header__title">사용자 인증</h1>
+      </div>
+    </header>
+
+    <!-- Tab Bar -->
+    <nav class="tab-bar" role="tablist" aria-label="인증 유형">
+      <button class="tab-item is-active" role="tab" aria-selected="true">개인</button>
+      <button class="tab-item"           role="tab" aria-selected="false">사업자</button>
+    </nav>
+
+    <!-- Content -->
+    <section class="content">
+      <div class="field-group">
+
+        <!-- 주민등록번호 split (filled) -->
+        <div class="field">
+          <span class="field__label" id="label-rrn">주민등록번호</span>
+          <div class="input-split" role="group" aria-labelledby="label-rrn">
+            <div class="input-wrap">
+              <input class="input" type="text" id="id-front" name="id_front"
+                value="900101"
+                maxlength="6" inputmode="numeric" autocomplete="off"
+                aria-label="주민번호 앞 6자리">
+              <button class="input-clear is-visible" type="button" aria-label="입력 내용 삭제" tabindex="-1">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="8" fill="#CCCCCC"/><path d="M5 5L11 11M11 5L5 11" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </button>
+            </div>
+            <span class="input-split__dash" aria-hidden="true">-</span>
+            <div class="input-wrap">
+              <input class="input" type="password" id="id-back" name="id_back"
+                value="1234567"
+                maxlength="7" inputmode="numeric" autocomplete="off"
+                aria-label="주민번호 뒤 7자리">
+              <button class="input-clear is-visible" type="button" aria-label="입력 내용 삭제" tabindex="-1">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="8" fill="#CCCCCC"/><path d="M5 5L11 11M11 5L5 11" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="account">계좌번호</label>
+          <div class="input-wrap">
+            <input class="input" type="text" id="account" name="account_no"
+              value="111122345678"
+              inputmode="numeric" autocomplete="off">
+            <button class="input-clear is-visible" type="button" aria-label="입력 내용 삭제" tabindex="-1">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="8" fill="#CCCCCC"/><path d="M5 5L11 11M11 5L5 11" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="pw">계좌 비밀번호 (4자리)</label>
+          <div class="input-wrap">
+            <input class="input" type="password" id="pw" name="account_pw"
+              value="1234"
+              maxlength="4" inputmode="numeric" autocomplete="current-password">
+            <button class="input-clear is-visible" type="button" aria-label="입력 내용 삭제" tabindex="-1">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="8" fill="#CCCCCC"/><path d="M5 5L11 11M11 5L5 11" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <aside class="info-text">
+        <span class="info-text__bullet" aria-hidden="true"></span>
+        <p class="info-text__body">종합통장대출(한도대출), 외화대출, 할인어음, 구매자금대출 등은 조회되지 않습니다.</p>
+      </aside>
+    </section>
+
+    <div class="fixed-area">
+      <button class="btn-primary" type="button">다음</button>
+    </div>
+
+  </div>
+</div>
+<script src="common.js"></script>
+</body>
+</html>
