@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0 user-scalable=yes, width=device-width">
+	<link href="../css/common.css" rel="stylesheet"/>
+	<link href="../css/style.css" rel="stylesheet"/>
+	<link href="../css/jquery-ui.min.css" rel="stylesheet"/>
+	<script src="../js/jquery-3.3.1.min.js"></script>
+	<script src="../js/jquery-ui.min.js"></script>
+	<script src="../js/script.js"></script>
+	<title>부산은행 멀티모달</title>
+</head>
+
+<body>
+	<div class="wrap">
+		<p class="skip"><a href="#container">본문내용 바로가기</a></p>
+
+		<header class="header">
+            <div class="header__inner">
+                <button class="header__back" title="뒤로가기">뒤로가기</button>
+
+                <div class="header__actions">
+                    <button class="action-btn" title="상담사 연결하기">
+                        <span class="action-btn__txt">상담사연결</span>
+                    </button>
+                    <button class="action-btn bg" title="통화 종료하기">
+                        <span class="action-btn__txt fw-500">통화종료</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+        <!--header_end-->
+
+		<hr/>
+
+		<div id="container" class="container">
+			<div class="pg-head">
+                <h2 class="pg-head__title">사용자 인증</h2>
+            </div>
+
+            <div class="content-wrap with-bottom-btn">
+                <div class="content-body">
+                    <div class="content inner-padding">
+
+                        <!-- 이름 -->
+                        <div class="inp-field">
+                            <label for="userName" class="inp-field-label">이름</label>
+
+                            <div class="cp-inp-row d-flex aic">
+                                <div class="cp-inp flex1">
+                                    <input type="text" id="userName" class="cp-inp-text" placeholder="이름을 입력하세요." title="이름 입력">
+                                    <button class="cp-inp-delete" title="입력된 내용 삭제"><img src="../img/comp_inp_delete.png" alt="삭제"></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 통신사 -->
+                        <div class="inp-field mt20">
+                            <span class="inp-field-label">통신사</span>
+
+                            <div class="combobox" data-type="telService">
+                                <button type="button" class="combobox__btn" onClick="openBottomSheet('telService')">
+                                    <span class="combobox__btn-txt">통신사를 선택해주세요.</span>
+                                </button>
+
+                                <div id="telService" class="bottom-sheet">
+                                    <div class="bs-bg">
+                                        <div class="bs-inner">
+                                            <div class="bs-header">
+                                                <div class="bs-header-row">
+                                                    <h3 class="bs-tit">통신사 선택</h3>
+                                                    <button class="bs-close" title="통신사 선택 닫기" onClick="closeBottomSheet('telService')">
+                                                        <img src="../img/comp_bs_header_close.png" alt="닫기">
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <div class="bs-cont">
+                                                <ul class="telecom-list">
+                                                    <li class="telecom-item">
+                                                        <button type="button" class="telecom-btn" title="SKT 선택">
+                                                            <span class="telecom-txt skt">SKT</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="telecom-item">
+                                                        <button type="button" class="telecom-btn" title="KT 선택">
+                                                            <span class="telecom-txt kt">KT</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="telecom-item">
+                                                        <button type="button" class="telecom-btn" title="LG U+ 선택">
+                                                            <span class="telecom-txt lg">LG U+</span>
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 휴대전화번호 -->
+                        <div class="inp-field mt20">
+                            <label for="phoneNum" class="inp-field-label">휴대전화번호</label>
+
+                            <div class="cp-inp-row d-flex aic">
+                                <div class="cp-inp flex1">
+                                    <input type="text" id="phoneNum" class="cp-inp-text" placeholder="휴대전화번호를 입력하세요." title="휴대전화번호 입력">
+                                    <button class="cp-inp-delete" title="입력된 내용 삭제"><img src="../img/comp_inp_delete.png" alt="삭제"></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 인증번호 -->
+                        <div class="inp-field mt20">
+                            <label for="verifyNum" class="inp-field-label">인증번호</label>
+
+                            <div class="cp-inp flex1 verify-inp">
+                                <input type="text" id="verifyNum" class="cp-inp-text" placeholder="인증번호를 입력하세요." title="인증번호 입력">
+
+                                <div class="verify-item">
+                                    <button type="button" class="cp-inp-delete pos-static" title="입력된 내용 삭제"><img src="../img/comp_inp_delete.png" alt="삭제"></button>
+                                    <span class="verify-time">0:00</span>
+                                    <button type="button" class="verify-btn" title="인증번호 재발송하기">인증번호 재발송</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- // content end -->
+                </div>
+                <!-- // content body end -->
+
+                <div class="process-btn">
+                    <div class="pb-row">
+                        <button type="button" class="btn-default h-52 primary flex1">다음</button>
+                    </div>
+                </div>
+                <!-- // process-btn end -->
+            </div>
+            <!-- // content-wrap end -->
+		</div>
+        <!-- // container End -->
+    </div>
+    <!-- // wrap end -->
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+        document.querySelectorAll('.telecom-btn').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                document.querySelectorAll('.telecom-item').forEach(function (item) {
+                    item.classList.remove('checked');
+                });
+
+                const item = this.closest('.telecom-item');
+                item.classList.add('checked');
+
+                const telecomTxt = item.querySelector('.telecom-txt').textContent;
+                const comboBtn = document.querySelector('[data-type="telService"] .combobox__btn');
+                comboBtn.querySelector('.combobox__btn-txt').textContent = telecomTxt;
+                comboBtn.classList.add('has-value');
+
+                closeBottomSheet('telService');
+            });
+        });
+
+    });
+</script>
+</body>
+</html>

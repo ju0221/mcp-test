@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0 user-scalable=yes, width=device-width">
+	<link href="../css/common.css" rel="stylesheet"/>
+	<link href="../css/style.css" rel="stylesheet"/>
+	<link href="../css/sub.css" rel="stylesheet"/>
+	<link href="../css/jquery-ui.min.css" rel="stylesheet"/>
+	<script src="../js/jquery-3.3.1.min.js"></script>
+	<script src="../js/jquery-ui.min.js"></script>
+	<script src="../js/script.js"></script>
+	<title>부산은행 멀티모달</title>
+</head>
+
+<body>
+	<div class="wrap">
+		<p class="skip"><a href="#container">본문내용 바로가기</a></p>
+
+		<header class="header">
+            <div class="header__inner">
+                <button class="header__back" title="뒤로가기">뒤로가기</button>
+
+                <div class="header__actions">
+                    <button class="action-btn" title="상담사 연결하기">
+                        <span class="action-btn__txt">상담사연결</span>
+                    </button>
+                    <button class="action-btn bg" title="통화 종료하기">
+                        <span class="action-btn__txt fw-500">통화종료</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+        <!--header_end-->
+
+		<hr/>
+
+		<div id="container" class="container">
+			<div class="pg-head">
+                <h2 class="pg-head__title">예/적금계산기(목돈만들기)</h2>
+            </div>
+
+            <div class="content-wrap with-bottom-btn">
+                <div class="content-body">
+                    <div class="content-tab">
+                        <button type="button" class="cont-tab active" title="월입금금액 탭으로 이동" data-tab="monthly">
+                            <span class="cont-tab__txt">월입금금액</span>
+                        </button>
+                        <button type="button" class="cont-tab" title="만기목표금액 탭으로 이동" data-tab="target">
+                            <span class="cont-tab__txt">만기목표금액</span>
+                        </button>
+                    </div>
+
+                    <div class="content inner-padding">
+
+                        <!-- 탭1: 월입금금액 -->
+                        <div id="tabMonthly" class="tab-panel">
+
+                            <div class="inp-field">
+                                <span class="inp-field-label">월입금금액</span>
+                                <div class="cp-inp money mt1x">
+                                    <input type="text" id="monthlyAmt" class="cp-inp-text" placeholder="최대12자리를 입력해주세요" title="월입금금액 입력">
+                                    <span class="cp-money-txt">원</span>
+                                </div>
+                            </div>
+
+                            <div class="inp-field mt20">
+                                <span class="inp-field-label">목표기간</span>
+                                <div class="cp-inp money mt1x">
+                                    <input type="text" id="monthlyPeriod" class="cp-inp-text" placeholder="숫자만 입력해주세요" title="목표기간 입력">
+                                    <span class="cp-money-txt">개월</span>
+                                </div>
+                            </div>
+
+                            <div class="inp-field mt20">
+                                <span class="inp-field-label">예금금리</span>
+                                <div class="radio mt1x">
+                                    <label for="monthlyRate1" class="radio-label">
+                                        <input type="radio" id="monthlyRate1" name="monthlyRate" class="cp-radio" checked>
+                                        단리
+                                    </label>
+                                    <label for="monthlyRate2" class="radio-label">
+                                        <input type="radio" id="monthlyRate2" name="monthlyRate" class="cp-radio">
+                                        복리
+                                    </label>
+                                </div>
+                                <div class="cp-inp money mt1x">
+                                    <input type="text" id="monthlyRateAmt" class="cp-inp-text" placeholder="숫자만 입력해주세요" title="예금금리 입력">
+                                    <span class="cp-money-txt">%</span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- // 탭1 end -->
+
+                        <!-- 탭2: 만기목표금액 -->
+                        <div id="tabTarget" class="tab-panel" style="display: none;">
+
+                            <div class="inp-field">
+                                <span class="inp-field-label">만기목표금액</span>
+                                <div class="cp-inp money mt1x">
+                                    <input type="text" id="targetAmt" class="cp-inp-text" placeholder="최대12자리를 입력해주세요" title="만기목표금액 입력">
+                                    <span class="cp-money-txt">원</span>
+                                </div>
+                            </div>
+
+                            <div class="inp-field mt20">
+                                <span class="inp-field-label">목표기간</span>
+                                <div class="radio mt1x">
+                                    <label for="period1" class="radio-label">
+                                        <input type="radio" id="period1" name="targetPeriod" class="cp-radio">
+                                        1개월
+                                    </label>
+                                    <label for="period2" class="radio-label">
+                                        <input type="radio" id="period2" name="targetPeriod" class="cp-radio">
+                                        3개월
+                                    </label>
+                                    <label for="period3" class="radio-label">
+                                        <input type="radio" id="period3" name="targetPeriod" class="cp-radio">
+                                        6개월
+                                    </label>
+                                    <label for="period4" class="radio-label">
+                                        <input type="radio" id="period4" name="targetPeriod" class="cp-radio">
+                                        12개월
+                                    </label>
+                                </div>
+                                <div class="cp-inp money mt1x">
+                                    <input type="text" id="targetPeriodAmt" class="cp-inp-text" placeholder="숫자만 입력해주세요" title="목표기간 입력">
+                                    <span class="cp-money-txt">개월</span>
+                                </div>
+                            </div>
+
+                            <div class="inp-field mt20">
+                                <span class="inp-field-label">예금금리</span>
+                                <div class="radio mt1x">
+                                    <label for="targetRate1" class="radio-label">
+                                        <input type="radio" id="targetRate1" name="targetRate" class="cp-radio" checked>
+                                        단리
+                                    </label>
+                                    <label for="targetRate2" class="radio-label">
+                                        <input type="radio" id="targetRate2" name="targetRate" class="cp-radio">
+                                        복리
+                                    </label>
+                                </div>
+                                <div class="cp-inp money mt1x">
+                                    <input type="text" id="targetRateAmt" class="cp-inp-text" placeholder="숫자만 입력해주세요" title="예금금리 입력">
+                                    <span class="cp-money-txt">%</span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- // 탭2 end -->
+
+                    </div>
+                    <!-- // content end -->
+                </div>
+                <!-- // content-body end -->
+
+                <div class="process-btn">
+                    <div class="pb-row gap-h-1x">
+                        <button type="button" class="btn-default h-52 confirm flex1" id="btnReset">초기화</button>
+                        <button type="button" class="btn-default h-52 primary flex2" id="btnCalc">계산</button>
+                    </div>
+                </div>
+                <!-- // process-btn end -->
+            </div>
+            <!-- // content-wrap end -->
+		</div>
+        <!-- // container End -->
+    </div>
+    <!-- // wrap end -->
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+        // 탭 전환
+        const tabs = document.querySelectorAll('.cont-tab');
+        const panels = document.querySelectorAll('.tab-panel');
+
+        tabs.forEach(function (tab) {
+            tab.addEventListener('click', function () {
+                tabs.forEach(function (t) { t.classList.remove('active'); });
+                this.classList.add('active');
+
+                const target = this.getAttribute('data-tab');
+                panels.forEach(function (panel) {
+                    panel.style.display = panel.id === 'tab' + capitalize(target) ? 'block' : 'none';
+                });
+            });
+        });
+
+        function capitalize(str) {
+            return str.charAt(0).toUpperCase() + str.slice(1);
+        }
+
+        // 목표기간 빠른선택 → 직접입력 연동
+        document.querySelectorAll('input[name="targetPeriod"]').forEach(function (radio) {
+            radio.addEventListener('change', function () {
+                const val = this.closest('.radio-label').textContent.trim().replace('개월', '');
+                document.getElementById('targetPeriodAmt').value = val;
+            });
+        });
+
+        // 직접입력 시 라디오 해제
+        document.getElementById('targetPeriodAmt').addEventListener('input', function () {
+            if (this.value) {
+                document.querySelectorAll('input[name="targetPeriod"]').forEach(function (r) {
+                    r.checked = false;
+                });
+            }
+        });
+
+        // 초기화
+        document.getElementById('btnReset').addEventListener('click', function () {
+            document.querySelectorAll('.tab-panel input[type="text"]').forEach(function (inp) {
+                inp.value = '';
+            });
+            document.querySelectorAll('.tab-panel input[type="radio"]').forEach(function (r) {
+                r.checked = false;
+            });
+            // 각 탭 단리 기본 선택
+            document.getElementById('monthlyRate1').checked = true;
+            document.getElementById('targetRate1').checked = true;
+        });
+
+    });
+</script>
+</body>
+</html>
