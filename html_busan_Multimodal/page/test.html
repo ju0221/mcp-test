@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0 user-scalable=yes, width=device-width">
+    <link href="../css/common.css" rel="stylesheet"/>
+    <link href="../css/style.css" rel="stylesheet"/>
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/script.js"></script>
+    <title>부산은행 멀티모달</title>
+    <style>
+        .loan-info-box { padding: 0 20px 20px; background-color: #F8F8F8; border: none; border-radius: 12px; }
+        .loan-info-box .detail-list2 { padding-top: 20px; border-top: none; }
+        .loan-info-box .data { color: #333; font-size: 16px; line-height: 20px; font-weight: 500; }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <p class="skip"><a href="#container">본문내용 바로가기</a></p>
+
+        <header class="header">
+            <div class="header__inner">
+                <button class="header__back" title="뒤로가기">뒤로가기</button>
+                <div class="header__actions">
+                    <button class="action-btn" title="상담사 연결하기">
+                        <span class="action-btn__txt">상담사연결</span>
+                    </button>
+                    <button class="action-btn bg" title="통화 종료하기">
+                        <span class="action-btn__txt fw-500">통화종료</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <div id="container" class="container">
+            <div class="pg-head">
+                <h2 class="pg-head__title">대출 원리금 상환</h2>
+            </div>
+
+            <div class="content-wrap">
+                <div class="content-body">
+                    <div class="content inner-padding">
+
+                        <!-- 대출 정보 -->
+                        <div class="loan-info-box">
+                            <ul class="detail-list2 bd0">
+                                <li class="dl-item">
+                                    <span class="head">대출상품</span>
+                                    <span class="data">ONE 장기근속 직장인 우대대출</span>
+                                </li>
+                                <li class="dl-item">
+                                    <span class="head">대출계좌</span>
+                                    <span class="data">11-0236-5785-01</span>
+                                </li>
+                                <li class="dl-item">
+                                    <span class="head">대출잔액</span>
+                                    <span class="data point-color"><strong>10,000,000</strong> 원</span>
+                                </li>
+                                <li class="dl-item">
+                                    <span class="head">적용금리</span>
+                                    <span class="data">연 3.50%</span>
+                                </li>
+                                <li class="dl-item">
+                                    <span class="head">대출기간</span>
+                                    <span class="data">2024.01.01 ~ 2027.12.31</span>
+                                </li>
+                                <li class="dl-item">
+                                    <span class="head">다음납입일</span>
+                                    <span class="data">2026.04.15</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- 대출상환구분 -->
+                        <div class="inp-field mt20">
+                            <span class="inp-field-label">대출상환구분</span>
+                            <div class="combobox" data-type="repayType">
+                                <button type="button" class="combobox__btn" onclick="openBottomSheet('repayType')">
+                                    <span class="combobox__btn-txt">대출상환구분을 선택해주세요.</span>
+                                </button>
+
+                                <div id="repayType" class="bottom-sheet">
+                                    <div class="bs-bg">
+                                        <div class="bs-inner">
+                                            <div class="bs-header">
+                                                <div class="bs-header-row">
+                                                    <h3 class="bs-tit">대출상환구분 선택</h3>
+                                                    <button class="bs-close" title="닫기" onclick="closeBottomSheet('repayType')">
+                                                        <img src="../img/comp_bs_header_close.png" alt="닫기">
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="bs-cont">
+                                                <ul class="area-num-list">
+                                                    <li class="num-item full">
+                                                        <button type="button" class="num-btn" title="원리금균등상환 선택">
+                                                            <span class="num-txt">원리금균등상환</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="num-item full">
+                                                        <button type="button" class="num-btn" title="원금균등상환 선택">
+                                                            <span class="num-txt">원금균등상환</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="num-item full">
+                                                        <button type="button" class="num-btn" title="만기일시상환 선택">
+                                                            <span class="num-txt">만기일시상환</span>
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="guide-list mt1x">
+                                <li class="info-body-txt">정기적인 대출이자 및 원금상환 조회이며, 조회 당일이 납입약정일이 아닌 경우 이자금액이 다를 수 있으며, 차액은 약정일(자동이체일)에 인출 됩니다.<br>(단, 일부 일시상환 계좌 및 원리금균등(할부)상환 계좌는 제외)</li>
+                            </ul>
+                        </div>
+
+                        <!-- 금액 -->
+                        <div class="inp-field mt20">
+                            <span class="inp-field-label">금액</span>
+                            <div class="radio">
+                                <label for="amt1" class="radio-label">
+                                    <input type="radio" id="amt1" name="amount" class="cp-radio">
+                                    100만
+                                </label>
+                                <label for="amt2" class="radio-label">
+                                    <input type="radio" id="amt2" name="amount" class="cp-radio">
+                                    50만
+                                </label>
+                                <label for="amt3" class="radio-label">
+                                    <input type="radio" id="amt3" name="amount" class="cp-radio">
+                                    10만
+                                </label>
+                                <label for="amt4" class="radio-label">
+                                    <input type="radio" id="amt4" name="amount" class="cp-radio">
+                                    1만
+                                </label>
+                                <label for="amt5" class="radio-label">
+                                    <input type="radio" id="amt5" name="amount" class="cp-radio">
+                                    정정
+                                </label>
+                            </div>
+                            <div class="cp-inp money mt12">
+                                <input type="text" id="amountTxt" class="cp-inp-text" placeholder="금액 직접입력" title="금액 입력">
+                                <button class="cp-inp-delete" title="입력된 내용 삭제"><img src="../img/comp_inp_delete.png" alt="삭제"></button>
+                                <span class="cp-money-txt">원</span>
+                            </div>
+                        </div>
+
+                        <!-- 납입일자 -->
+                        <div class="inp-field mt20">
+                            <span class="inp-field-label">납입일자</span>
+                            <div class="cp-inp-row date-range d-flex aic mt12">
+                                <div class="cp-inp flex1">
+                                    <input type="text" id="startDate" class="cp-inp-text dp" placeholder="2024-02-24" title="기간 시작 입력" data-date-role="start" readonly>
+                                </div>
+                                <span class="hypen">~</span>
+                                <div class="cp-inp flex1">
+                                    <input type="text" id="endDate" class="cp-inp-text dp" placeholder="2026-02-24" title="기간 종료 입력" data-date-role="end" readonly>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 알아두세요 -->
+                        <div class="inp-field mt20">
+                            <p class="info-body-tit">알아두세요</p>
+                            <ul class="guide-list mt1x">
+                                <li class="info-body-txt">대출상환원금은 입금하실 대출원금 금액만 입력하시기 바랍니다.<br>(미입력 시 납부하실 대출이자 및 원리금이 조회됩니다.)</li>
+                                <li class="info-body-txt point-color">상환예정일이 당일이 아닌 경우 조회만 가능하며 가상계좌로 입금할 수 없습니다.</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <!-- // content end -->
+                </div>
+                <!-- // content-body end -->
+
+                <div class="process-btn">
+                    <div class="pb-row">
+                        <a href="#" class="btn-default h-52 primary">다음</a>
+                    </div>
+                </div>
+            </div>
+            <!-- // content-wrap end -->
+        </div>
+        <!-- // container end -->
+    </div>
+    <!-- // wrap end -->
+
+    <!-- 날짜 선택 바텀시트 -->
+    <div class="dp-sheet" id="dpSheet" aria-hidden="true">
+        <div class="dp-sheet__dim" data-sheet-close></div>
+        <div class="dp-sheet__panel" role="dialog" aria-modal="true" aria-labelledby="dpSheetTitle">
+            <div class="dp-sheet__handle"></div>
+            <div class="dp-sheet__head">
+                <div class="bs-header">
+                    <div class="bs-header-row">
+                        <h3 class="bs-tit" id="dpSheetTitle">날짜 선택</h3>
+                        <button type="button" class="bs-close" title="날짜 선택 닫기" data-sheet-close>
+                            <img src="../img/comp_bs_header_close.png" alt="닫기">
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="dp-sheet__calendar" id="dpCalendarWrap"></div>
+        </div>
+    </div>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ko.js"></script>
+
+    <script>
+        // 대출상환구분 바텀시트 선택
+        document.querySelectorAll('#repayType .num-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                const item = this.closest('.num-item');
+                document.querySelectorAll('#repayType .num-item').forEach(function(i) {
+                    i.classList.remove('checked');
+                });
+                item.classList.add('checked');
+
+                const txt = item.querySelector('.num-txt').textContent.trim();
+                const comboBtn = document.querySelector('[data-type="repayType"] .combobox__btn');
+                comboBtn.querySelector('.combobox__btn-txt').textContent = txt;
+                comboBtn.classList.add('has-value');
+
+                closeBottomSheet('repayType');
+            });
+        });
+
+        // 금액 버튼 선택 시 직접입력 초기화
+        document.querySelectorAll('input[name="amount"]').forEach(function(radio) {
+            radio.addEventListener('change', function() {
+                const input = document.getElementById('amountTxt');
+                input.value = '';
+                input.dispatchEvent(new Event('input'));
+            });
+        });
+
+        // 금액 직접입력 시 라디오 해제
+        document.getElementById('amountTxt').addEventListener('input', function() {
+            if (this.value) {
+                document.querySelectorAll('input[name="amount"]').forEach(function(r) {
+                    r.checked = false;
+                });
+            }
+        });
+
+        new EmptyClassToggler('.cp-inp.money');
+
+        new DatePickerBottomSheet({
+            jumpMonthUnit: 1,
+            globalMinDate: '2024-01-01',
+            globalMaxDate: '2030-12-31'
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,749 @@
+@charset "utf-8";
+
+.content-tab {display: flex; gap: 0 20px; padding: 24px 20px 0; border-bottom: 4px solid #F0F0F0;}
+.content-tab .cont-tab {margin-bottom: -4px;}
+
+.content-wrap { display: flex; flex-direction: column; justify-content: space-between; height: calc(100% - 48px); }
+.content-body { flex: 1; min-height: 0; }
+.content {overflow-y: auto; max-height: 100%;}
+.content-tab + .content {height: calc(100% - 60px);}
+
+.inp-field.hide {display: none;}
+.inp-field-label + .radio {margin-top: 12px;}
+
+.guide-list li {margin-bottom: 12px;}
+.guide-list li:last-child {margin-bottom: 0;}
+
+/* 메뉴 */
+.main-menu .mg-tit {padding-top: 44px; color: #333; font-weight: 500; font-size: 20px; line-height: 1.4; background-repeat: no-repeat; background-size: 40px; word-break: keep-all;}
+
+.main-menu .mm-list {display: flex; flex-direction: column; gap: 16px 0;}
+.main-menu .mm-list .tab-item .ico01:before {background-image: url(../img/menu_ico1.png);} /* 신규 서류 안내 */
+.main-menu .mm-list .tab-item .ico02:before {background-image: url(../img/menu_ico2.png);} /* 재발급 서류 안내 */
+.main-menu .mm-list .tab-item .ico03:before {background-image: url(../img/menu_ico3.png);} /* 증명서 서류 안내 */
+.main-menu .mm-list .tab-item .ico04:before {background-image: url(../img/menu_ico4.png);} /* 상속예금 지급 신청 서류 안내 */
+
+.main-menu .mm-list .tab-item .ico11:before {background-image: url(../img/menu_ico11.png);} /* 개인 (만 19세 이상) */
+.main-menu .mm-list .tab-item .ico12:before {background-image: url(../img/menu_ico12.png);} /* 개인 (만 14세 이상 ~ 만 19세 미만) */
+.main-menu .mm-list .tab-item .ico13:before {background-image: url(../img/menu_ico13.png);} /* 개인 (만 14세  미만) */
+.main-menu .mm-list .tab-item .ico14:before {background-image: url(../img/menu_ico14.png);} /* 개인 가업자 */
+.main-menu .mm-list .tab-item .ico15:before {background-image: url(../img/menu_ico15.png);} /* 법인 및 임의단체 */
+
+.main-menu .mg-tit.fax-doc {background-image: url(../img/mm-guide-fax-doc.png);} /* 팩스서비스 */
+.main-menu .mm-list .tab-item .ico016_01:before {background-image: url(../img/menu_ico016_01.png);} /* 예금 거래내역 팩스 */
+.main-menu .mm-list .tab-item .ico016_02:before {background-image: url(../img/menu_ico016_02.png);} /* 대출 거래내역 팩스 */
+.main-menu .mm-list .tab-item .ico016_03:before {background-image: url(../img/menu_ico016_03.png);} /* 연체 완납 확인서 팩스 */
+.main-menu .mm-list .tab-item .ico016_04:before {background-image: url(../img/menu_ico016_04.png);} /* 카드 연체 완납 확인서 팩스 */
+.main-menu .mm-list .tab-item .ico016_05:before {background-image: url(../img/menu_ico016_05.png);} /* 당일 텔레뱅킹 송금 내역 팩스 */
+
+.main-menu .mg-tit.certificate-doc {background-image: url(../img/mm-guide-certificate-doc.png);} /* 인증서 등록 및 폐기 */
+.main-menu .mm-list .tab-item .ico059_01:before {background-image: url(../img/menu_ico059_01.png);} /* 인증서 종류 */
+.main-menu .mm-list .tab-item .ico059_02:before {background-image: url(../img/menu_ico059_02.png);} /* 인증서 발급 */
+.main-menu .mm-list .tab-item .ico059_03:before {background-image: url(../img/menu_ico059_03.png);} /* 인증서 갱신 */
+.main-menu .mm-list .tab-item .ico059_04:before {background-image: url(../img/menu_ico059_04.png);} /* 인증서 복사 */
+.main-menu .mm-list .tab-item .ico059_05:before {background-image: url(../img/menu_ico059_05.png);} /* 타행(기관)인증서 등록 */
+.main-menu .mm-list .tab-item .ico059_06:before {background-image: url(../img/menu_ico059_06.png);} /* 인증서 폐기 */
+
+
+/* 서류안내 메뉴트리 */
+.main-menu .mg-tit.doc {background-image: url(../img/mm-guide-doc.png);} /* 서류안내 */
+
+/* 예금 */
+.main-menu .mm-list .tab-item .ico001_0101:before {background-image: url(../img/menu_doc/menu_ico_0101.png);}         /* 예금_신규 */
+.main-menu .mm-list .tab-item .ico001_010101:before {background-image: url(../img/menu_doc/menu_ico_010101.png);}     /* 예금_신규_개인(19~) */
+.main-menu .mm-list .tab-item .ico001_01010101:before {background-image: url(../img/menu_doc/menu_ico_01010101.png);} /* 예금_신규_개인(19~)_본인 */
+.main-menu .mm-list .tab-item .ico001_01010102:before {background-image: url(../img/menu_doc/menu_ico_01010102.png);} /* 예금_신규_개인(19~)_대리인(가족) */
+.main-menu .mm-list .tab-item .ico001_01010103:before {background-image: url(../img/menu_doc/menu_ico_01010103.png);} /* 예금_신규_개인(19~)_대리인(이외) */
+
+.main-menu .mm-list .tab-item .ico001_010102:before {background-image: url(../img/menu_doc/menu_ico_010102.png);}     /* 예금_신규_개인(04~19) */
+.main-menu .mm-list .tab-item .ico001_01010201:before {background-image: url(../img/menu_doc/menu_ico_01010201.png);} /* 예금_신규_개인(04~19)_본인 */
+.main-menu .mm-list .tab-item .ico001_01010202:before {background-image: url(../img/menu_doc/menu_ico_01010202.png);} /* 예금_신규_개인(04~19)_부모(친권자미지정) */
+.main-menu .mm-list .tab-item .ico001_01010203:before {background-image: url(../img/menu_doc/menu_ico_01010203.png);} /* 예금_신규_개인(04~19)_부모중1인 */
+.main-menu .mm-list .tab-item .ico001_01010204:before {background-image: url(../img/menu_doc/menu_ico_01010204.png);} /* 예금_신규_개인(04~19)_부모모두 */
+.main-menu .mm-list .tab-item .ico001_01010205:before {background-image: url(../img/menu_doc/menu_ico_01010205.png);} /* 예금_신규_개인(04~19)_조부모(외조부모) */
+
+.main-menu .mm-list .tab-item .ico001_010103:before {background-image: url(../img/menu_doc/menu_ico_010103.png);}     /* 예금_신규_개인(~14) */
+.main-menu .mm-list .tab-item .ico001_01010301:before {background-image: url(../img/menu_doc/menu_ico_01010301.png);} /* 예금_신규_개인(~14)_본인 */
+.main-menu .mm-list .tab-item .ico001_01010302:before {background-image: url(../img/menu_doc/menu_ico_01010302.png);} /* 예금_신규_개인(~14)_부모(친권자미지정) */
+.main-menu .mm-list .tab-item .ico001_01010303:before {background-image: url(../img/menu_doc/menu_ico_01010303.png);} /* 예금_신규_개인(~14)_부모중1인 */
+.main-menu .mm-list .tab-item .ico001_01010304:before {background-image: url(../img/menu_doc/menu_ico_01010304.png);} /* 예금_신규_개인(~14)_부모모두 */
+.main-menu .mm-list .tab-item .ico001_01010305:before {background-image: url(../img/menu_doc/menu_ico_01010305.png);} /* 예금_신규_개인(~14)_조부모(외조부모) */
+
+.main-menu .mm-list .tab-item .ico001_010104:before {background-image: url(../img/menu_doc/menu_ico_010104.png);}     /* 예금_신규_개인사업자/단체 */
+.main-menu .mm-list .tab-item .ico001_01010101:before {background-image: url(../img/menu_doc/menu_ico_01010401.png);} /* 예금_신규_개인사업자/단체_본인 */
+.main-menu .mm-list .tab-item .ico001_01010102:before {background-image: url(../img/menu_doc/menu_ico_01010402.png);} /* 예금_신규_개인사업자/단체_대리인(가족) */
+.main-menu .mm-list .tab-item .ico001_01010103:before {background-image: url(../img/menu_doc/menu_ico_01010403.png);} /* 예금_신규_개인사업자/단체_대리인(이외) */
+
+.main-menu .mm-list .tab-item .ico001_010105:before {background-image: url(../img/menu_doc/menu_ico_010105.png);}     /* 예금_신규_법인및임의단체 */
+.main-menu .mm-list .tab-item .ico001_01010501:before {background-image: url(../img/menu_doc/menu_ico_01010501.png);} /* 예금_신규_법인및임의단체_영리법인/등기된 영리법인 대표이사(또는 각자대표) */
+.main-menu .mm-list .tab-item .ico001_01010502:before {background-image: url(../img/menu_doc/menu_ico_01010502.png);} /* 예금_신규_법인및임의단체_영리법인/등기된 영리법인 공동대표인 경우 */
+.main-menu .mm-list .tab-item .ico001_01010503:before {background-image: url(../img/menu_doc/menu_ico_01010503.png);} /* 예금_신규_법인및임의단체_영리법인/등기된 영리법인 대리인(임직원) */
+.main-menu .mm-list .tab-item .ico001_01010504:before {background-image: url(../img/menu_doc/menu_ico_01010504.png);} /* 예금_신규_법인및임의단체_등기 안된 비영리 법인 대표자(공동대표 포함) */
+.main-menu .mm-list .tab-item .ico001_01010505:before {background-image: url(../img/menu_doc/menu_ico_01010505.png);} /* 예금_신규_법인및임의단체_등기 안된 비영리 법인 대리인(임직원) */
+.main-menu .mm-list .tab-item .ico001_01010506:before {background-image: url(../img/menu_doc/menu_ico_01010506.png);} /* 예금_신규_법인및임의단체_국가기관, 지방자치단체 등 (초.중등교육법에서 정한 학교기관 포함) 대리인(임직원) */
+.main-menu .mm-list .tab-item .ico001_01010507:before {background-image: url(../img/menu_doc/menu_ico_01010507.png);} /* 예금_신규_법인및임의단체_고유번호증 또는 납세번호증 발급된 임의단체 대표자 */
+.main-menu .mm-list .tab-item .ico001_01010508:before {background-image: url(../img/menu_doc/menu_ico_01010508.png);} /* 예금_신규_법인및임의단체_고유번호증 또는 납세번호증 발급된 임의단체 대리인(임직원) */
+.main-menu .mm-list .tab-item .ico001_01010509:before {background-image: url(../img/menu_doc/menu_ico_01010509.png);} /* 예금_신규_법인및임의단체_확인 서류 제출 가능한 임의단체 대표자 */
+.main-menu .mm-list .tab-item .ico001_01010510:before {background-image: url(../img/menu_doc/menu_ico_01010510.png);} /* 예금_신규_법인및임의단체_확인 서류 제출 가능한 임의단체 대리인 */
+
+.main-menu .mm-list .tab-item .ico001_0102:before {background-image: url(../img/menu_doc/menu_ico_0102.png);}         /* 예금_재발급 */
+.main-menu .mm-list .tab-item .ico001_010201:before {background-image: url(../img/menu_doc/menu_ico_010201.png);}     /* 예금_재발급_개인(19이상) */
+.main-menu .mm-list .tab-item .ico001_01020101:before {background-image: url(../img/menu_doc/menu_ico_01020101.png);} /* 예금_재발급_개인(19이상)_본인 */
+
+.main-menu .mm-list .tab-item .ico001_010202:before {background-image: url(../img/menu_doc/menu_ico_010202.png);}     /* 예금_재발급_개인(19미만) */
+.main-menu .mm-list .tab-item .ico001_01020201:before {background-image: url(../img/menu_doc/menu_ico_01020201.png);} /* 예금_재발급_개인(19미만)_부모(친권지미지정) */
+.main-menu .mm-list .tab-item .ico001_01020202:before {background-image: url(../img/menu_doc/menu_ico_01020202.png);} /* 예금_재발급_개인(19미만)_부모중1인 */
+.main-menu .mm-list .tab-item .ico001_01020203:before {background-image: url(../img/menu_doc/menu_ico_01020203.png);} /* 예금_재발급_개인(19미만)_부모모두 */
+
+.main-menu .mm-list .tab-item .ico001_010203:before {background-image: url(../img/menu_doc/menu_ico_010203.png);}     /* 예금_재발급_개인사업자/단체 */
+.main-menu .mm-list .tab-item .ico001_01020301:before {background-image: url(../img/menu_doc/menu_ico_01020301.png);} /* 예금_재발급_개인사업자/단체_본인 */
+
+.main-menu .mm-list .tab-item .ico001_010204:before {background-image: url(../img/menu_doc/menu_ico_010204.png);}     /* 예금_재발급_법인및임의단체 */
+.main-menu .mm-list .tab-item .ico001_01020401:before {background-image: url(../img/menu_doc/menu_ico_01020401.png);} /* 예금_재발급_법인및임의단체_영리법인/등기된 영리법인 대표이사(또는 각자대표) */
+.main-menu .mm-list .tab-item .ico001_01020402:before {background-image: url(../img/menu_doc/menu_ico_01020402.png);} /* 예금_재발급_법인및임의단체_영리법인/등기된 영리법인 공동대표인 경우 */
+.main-menu .mm-list .tab-item .ico001_01020403:before {background-image: url(../img/menu_doc/menu_ico_01020403.png);} /* 예금_재발급_법인및임의단체_영리법인/등기된 영리법인 대리인(임직원) */
+.main-menu .mm-list .tab-item .ico001_01020404:before {background-image: url(../img/menu_doc/menu_ico_01020404.png);} /* 예금_재발급_법인및임의단체_등기 안된 비영리 법인 대표자(공동대표 포함) */
+.main-menu .mm-list .tab-item .ico001_01020405:before {background-image: url(../img/menu_doc/menu_ico_01020405.png);} /* 예금_재발급_법인및임의단체_등기 안된 비영리 법인 대리인(임직원) */
+.main-menu .mm-list .tab-item .ico001_01020406:before {background-image: url(../img/menu_doc/menu_ico_01020406.png);} /* 예금_재발급_법인및임의단체_국가기관, 지방자치단체 등 (초.중등교육법에서 정한 학교기관 포함) 대리인(임직원) */
+.main-menu .mm-list .tab-item .ico001_01020407:before {background-image: url(../img/menu_doc/menu_ico_01020407.png);} /* 예금_재발급_법인및임의단체_고유번호증 또는 납세번호증 발급된 임의단체 대표자 */
+.main-menu .mm-list .tab-item .ico001_01020408:before {background-image: url(../img/menu_doc/menu_ico_01020408.png);} /* 예금_재발급_법인및임의단체_고유번호증 또는 납세번호증 발급된 임의단체 대리인(임직원) */
+.main-menu .mm-list .tab-item .ico001_01020409:before {background-image: url(../img/menu_doc/menu_ico_01020409.png);} /* 예금_재발급_법인및임의단체_확인 서류 제출 가능한 임의단체 대표자 */
+.main-menu .mm-list .tab-item .ico001_01020410:before {background-image: url(../img/menu_doc/menu_ico_01020410.png);} /* 예금_재발급_법인및임의단체_확인 서류 제출 가능한 임의단체 대리인 */
+
+.main-menu .mm-list .tab-item .ico001_0103:before {background-image: url(../img/menu_doc/menu_ico_0103.png);}         /* 예금_증명서 */
+.main-menu .mm-list .tab-item .ico001_010301:before {background-image: url(../img/menu_doc/menu_ico_010301.png);}     /* 예금_증명서_개인(19이상) */
+.main-menu .mm-list .tab-item .ico001_01030101:before {background-image: url(../img/menu_doc/menu_ico_01030101.png);} /* 예금_증명서_개인(19이상)_본인 */
+.main-menu .mm-list .tab-item .ico001_01030102:before {background-image: url(../img/menu_doc/menu_ico_01030102.png);} /* 예금_증명서_개인(19이상)_대리인 */
+
+.main-menu .mm-list .tab-item .ico001_010302:before {background-image: url(../img/menu_doc/menu_ico_010302.png);}     /* 예금_증명서_개인(19미만) */
+.main-menu .mm-list .tab-item .ico001_01030201:before {background-image: url(../img/menu_doc/menu_ico_01030201.png);} /* 예금_증명서_개인(19미만)_친권자미지정 */
+.main-menu .mm-list .tab-item .ico001_01030202:before {background-image: url(../img/menu_doc/menu_ico_01030202.png);} /* 예금_증명서_개인(19미만)_친권자지정 */
+
+.main-menu .mm-list .tab-item .ico001_010303:before {background-image: url(../img/menu_doc/menu_ico_010303.png);}     /* 예금_증명서_법인 */
+.main-menu .mm-list .tab-item .ico001_01030301:before {background-image: url(../img/menu_doc/menu_ico_01030301.png);} /* 예금_증명서_법인_본인 */
+.main-menu .mm-list .tab-item .ico001_01030302:before {background-image: url(../img/menu_doc/menu_ico_01030302.png);} /* 예금_증명서_법인_대리인 */
+
+.main-menu .mm-list .tab-item .ico001_010304:before {background-image: url(../img/menu_doc/menu_ico_010304.png);}     /* 예금_증명서_비영리법인 */
+.main-menu .mm-list .tab-item .ico001_01030401:before {background-image: url(../img/menu_doc/menu_ico_01030401.png);} /* 예금_증명서_비영리법인_본인 */
+.main-menu .mm-list .tab-item .ico001_01030402:before {background-image: url(../img/menu_doc/menu_ico_01030402.png);} /* 예금_증명서_비영리법인_대리인 */
+
+.main-menu .mm-list .tab-item .ico001_0104:before {background-image: url(../img/menu_doc/menu_ico_0104.png);}         /* 예금_상속 */
+.main-menu .mm-list .tab-item .ico001_010401:before {background-image: url(../img/menu_doc/menu_ico_010401.png);}     /* 예금_상속_상속인금융거래조회 */
+.main-menu .mm-list .tab-item .ico001_010401:before {background-image: url(../img/menu_doc/menu_ico_010402.png);}     /* 예금_상속_상속예금지급신청 */
+
+
+/* 대출 */
+.main-menu .mm-list .tab-item .ico001_0201:before {background-image: url(../img/menu_doc/menu_ico_0201.png);}         /* 대출_신용대출 */
+.main-menu .mm-list .tab-item .ico001_020101:before {background-image: url(../img/menu_doc/menu_ico_020101.png);}     /* 대출_신용대출_방문서류 */
+.main-menu .mm-list .tab-item .ico001_02010101:before {background-image: url(../img/menu_doc/menu_ico_02010101.png);} /* 대출_신용대출_방문서류_급여소득자 */
+.main-menu .mm-list .tab-item .ico001_02010102:before {background-image: url(../img/menu_doc/menu_ico_02010102.png);} /* 대출_신용대출_방문서류_사업자 */
+.main-menu .mm-list .tab-item .ico001_02010103:before {background-image: url(../img/menu_doc/menu_ico_02010103.png);} /* 대출_신용대출_방문서류_기타소득자 */
+.main-menu .mm-list .tab-item .ico001_02010104:before {background-image: url(../img/menu_doc/menu_ico_02010104.png);} /* 대출_신용대출_방문서류_프리랜서 */
+
+
+/* 증명서 */
+.main-menu .mm-list .tab-item .ico001_0301:before {background-image: url(../img/menu_doc/menu_ico_0301.png);}         /* 증명서_증명서 */
+.main-menu .mm-list .tab-item .ico001_030101:before {background-image: url(../img/menu_doc/menu_ico_030101.png);}     /* 증명서_증명서_개인 */
+.main-menu .mm-list .tab-item .ico001_03010101:before {background-image: url(../img/menu_doc/menu_ico_03010101.png);} /* 증명서_증명서_개인_본인 */
+.main-menu .mm-list .tab-item .ico001_03010102:before {background-image: url(../img/menu_doc/menu_ico_03010102.png);} /* 증명서_증명서_개인_대리인 */
+.main-menu .mm-list .tab-item .ico001_030102:before {background-image: url(../img/menu_doc/menu_ico_030102.png);}     /* 증명서_증명서_법인 및 임의단체 */
+.main-menu .mm-list .tab-item .ico001_03010201:before {background-image: url(../img/menu_doc/menu_ico_03010201.png);} /* 증명서_증명서_법인 및 임의단체_본인 */
+.main-menu .mm-list .tab-item .ico001_03010202:before {background-image: url(../img/menu_doc/menu_ico_03010202.png);} /* 증명서_증명서_법인 및 임의단체_대리인 */
+
+
+/* 카드 */
+.main-menu .mm-list .tab-item .ico001_0401:before {background-image: url(../img/menu_doc/menu_ico_0401.png);}         /* 카드_카드재발급 */
+.main-menu .mm-list .tab-item .ico001_040101:before {background-image: url(../img/menu_doc/menu_ico_040101.png);}     /* 카드_카드재발급_개인회원 */
+.main-menu .mm-list .tab-item .ico001_040102:before {background-image: url(../img/menu_doc/menu_ico_040102.png);}     /* 카드_카드재발급_가족회원 */
+.main-menu .mm-list .tab-item .ico001_040103:before {background-image: url(../img/menu_doc/menu_ico_040103.png);}     /* 카드_카드재발급_친권자미지정 */
+.main-menu .mm-list .tab-item .ico001_040104:before {background-image: url(../img/menu_doc/menu_ico_040104.png);}     /* 카드_카드재발급_친권자지정 */
+.main-menu .mm-list .tab-item .ico001_040105:before {background-image: url(../img/menu_doc/menu_ico_040105.png);}     /* 카드_카드재발급_개인사업자 */
+.main-menu .mm-list .tab-item .ico001_040106:before {background-image: url(../img/menu_doc/menu_ico_040106.png);}     /* 카드_카드재발급_임의단체_대표 */
+.main-menu .mm-list .tab-item .ico001_040107:before {background-image: url(../img/menu_doc/menu_ico_040107.png);}     /* 카드_카드재발급_임의단체_대리인 */
+.main-menu .mm-list .tab-item .ico001_040108:before {background-image: url(../img/menu_doc/menu_ico_040108.png);}     /* 카드_카드재발급_비영리_대표 */
+.main-menu .mm-list .tab-item .ico001_040109:before {background-image: url(../img/menu_doc/menu_ico_040109.png);}     /* 카드_카드재발급_비영리_단체대표 */
+.main-menu .mm-list .tab-item .ico001_040110:before {background-image: url(../img/menu_doc/menu_ico_040110.png);}     /* 카드_카드재발급_비영리_대리인 */
+.main-menu .mm-list .tab-item .ico001_040111:before {background-image: url(../img/menu_doc/menu_ico_040111.png);}     /* 카드_카드재발급_영리_대표 */
+.main-menu .mm-list .tab-item .ico001_040112:before {background-image: url(../img/menu_doc/menu_ico_040112.png);}     /* 카드_카드재발급_영리_공동대표 */
+
+
+/* 전자금융 */
+.main-menu .mm-list .tab-item .ico001_0501:before {background-image: url(../img/menu_doc/menu_ico_0501.png);}         /* 전자금융_전자금융신규 */
+.main-menu .mm-list .tab-item .ico001_050101:before {background-image: url(../img/menu_doc/menu_ico_050101.png);}     /* 전자금융_전자금융신규_본인 */
+.main-menu .mm-list .tab-item .ico001_050102:before {background-image: url(../img/menu_doc/menu_ico_050102.png);}     /* 전자금융_전자금융신규_법정대리인 */
+.main-menu .mm-list .tab-item .ico001_050103:before {background-image: url(../img/menu_doc/menu_ico_050103.png);}     /* 전자금융_전자금융신규_영리_대표 */
+.main-menu .mm-list .tab-item .ico001_050104:before {background-image: url(../img/menu_doc/menu_ico_050104.png);}     /* 전자금융_전자금융신규_영리_대리인 */
+.main-menu .mm-list .tab-item .ico001_050105:before {background-image: url(../img/menu_doc/menu_ico_050105.png);}     /* 전자금융_전자금융신규_비영리_본인 */
+.main-menu .mm-list .tab-item .ico001_050106:before {background-image: url(../img/menu_doc/menu_ico_050106.png);}     /* 전자금융_전자금융신규_비영리_대리인 */
+.main-menu .mm-list .tab-item .ico001_050107:before {background-image: url(../img/menu_doc/menu_ico_050107.png);}     /* 전자금융_전자금융신규_국가단체_대리인 */
+.main-menu .mm-list .tab-item .ico001_050108:before {background-image: url(../img/menu_doc/menu_ico_050108.png);}     /* 전자금융_전자금융신규_임의단체_대표 */
+.main-menu .mm-list .tab-item .ico001_050109:before {background-image: url(../img/menu_doc/menu_ico_050109.png);}     /* 전자금융_전자금융신규_임의단체_대리인 */
+.main-menu .mm-list .tab-item .ico001_050110:before {background-image: url(../img/menu_doc/menu_ico_050110.png);}     /* 전자금융_전자금융신규_폐업법인해지 */
+
+
+
+/* 연말정산 메뉴트리 */
+.main-menu .mg-tit.fax {background-image: url(../img/menu_doc/mm-guide-tax.png);} /* 연말정산 */
+
+
+/* 상품별 안내 */
+.main-menu .mm-list .tab-item .ico002_0101:before {background-image: url(../img/menu_yeartax/menu_ico_0101.png);}      /* 상품별 안내_대출 */
+.main-menu .mm-list .tab-item .ico002_010101:before {background-image: url(../img/menu_yeartax/menu_ico_010101.png);}  /* 상품별 안내_대출_전세대출 */
+.main-menu .mm-list .tab-item .ico002_010102:before {background-image: url(../img/menu_yeartax/menu_ico_010102.png);}  /* 상품별 안내_대출_주택대출 */
+
+.main-menu .mm-list .tab-item .ico002_0102:before {background-image: url(../img/menu_yeartax/menu_ico_0102.png);}      /* 상품별 안내_청약 */
+.main-menu .mm-list .tab-item .ico002_010201:before {background-image: url(../img/menu_yeartax/menu_ico_010201.png);}  /* 상품별 안내_청약_주택청약종합저축 */
+
+.main-menu .mm-list .tab-item .ico002_0103:before {background-image: url(../img/menu_yeartax/menu_ico_0103.png);}      /* 상품별 안내_연금신탁 */
+.main-menu .mm-list .tab-item .ico002_010301:before {background-image: url(../img/menu_yeartax/menu_ico_010301.png);}  /* 상품별 안내_연금신탁_연금신탁 */
+.main-menu .mm-list .tab-item .ico002_010302:before {background-image: url(../img/menu_yeartax/menu_ico_010302.png);}  /* 상품별 안내_연금신탁_개인연금신탁 */
+
+.main-menu .mm-list .tab-item .ico002_0104:before {background-image: url(../img/menu_yeartax/menu_ico_0104.png);}      /* 상품별 안내_펀드 */
+
+.main-menu .mm-list .tab-item .ico002_0105:before {background-image: url(../img/menu_yeartax/menu_ico_0105.png);}      /* 상품별 안내_퇴직연금 */
+
+.main-menu .mm-list .tab-item .ico002_0106:before {background-image: url(../img/menu_yeartax/menu_ico_0106.png);}      /* 상품별 안내_기타 */
+.main-menu .mm-list .tab-item .ico002_010601:before {background-image: url(../img/menu_yeartax/menu_ico_010601.png);}  /* 상품별 안내_기타_월세금이체내역서 */
+.main-menu .mm-list .tab-item .ico002_010602:before {background-image: url(../img/menu_yeartax/menu_ico_010602.png);}  /* 상품별 안내_기타_노란우산공제 */
+
+.main-menu .mm-list .tab-item .ico002_0107:before {background-image: url(../img/menu_yeartax/menu_ico_0107.png);}      /* 상품별 안내_카드소득공제 */
+
+
+/* 국세청 제출 서류 */
+.main-menu .mm-list .tab-item .ico002_0201:before {background-image: url(../img/menu_yeartax/menu_ico_0201.png);}      /* 국세청 제출 서류_국세청발급  */
+.main-menu .mm-list .tab-item .ico002_0202:before {background-image: url(../img/menu_yeartax/menu_ico_0202.png);}      /* 국세청 제출 서류_은행발급 */
+.main-menu .mm-list .tab-item .ico002_020201:before {background-image: url(../img/menu_yeartax/menu_ico_020201.png);}  /* 국세청 제출 서류_은행발급_대출 */
+.main-menu .mm-list .tab-item .ico002_020202:before {background-image: url(../img/menu_yeartax/menu_ico_020202.png);}  /* 국세청 제출 서류_은행발급_청약 */
+.main-menu .mm-list .tab-item .ico002_020203:before {background-image: url(../img/menu_yeartax/menu_ico_020203.png);}  /* 국세청 제출 서류_은행발급_연금신탁 */
+.main-menu .mm-list .tab-item .ico002_020204:before {background-image: url(../img/menu_yeartax/menu_ico_020204.png);}  /* 국세청 제출 서류_은행발급_펀드 */
+.main-menu .mm-list .tab-item .ico002_020205:before {background-image: url(../img/menu_yeartax/menu_ico_020205.png);}  /* 국세청 제출 서류_은행발급_퇴직연금 */
+.main-menu .mm-list .tab-item .ico002_020206:before {background-image: url(../img/menu_yeartax/menu_ico_020206.png);}  /* 국세청 제출 서류_은행발급_기타 */
+.main-menu .mm-list .tab-item .ico002_020207:before {background-image: url(../img/menu_yeartax/menu_ico_020207.png);}  /* 국세청 제출 서류_은행발급_카드 */
+
+
+
+.img-tit {padding-top: 44px; color: #333; font-weight: 500; font-size: 20px; line-height: 1.4; background-repeat: no-repeat; background-size: 40px; word-break: keep-all;}
+.img-tit.agreement {background-image: url(../img/bs-img-guide-ico1.png);}
+
+/* 예금 신규 서류 */
+.new-docs .nd-tit {font-size: 17px; line-height: 25px; word-break: keep-all;}
+.new-docs .docs-guide-list {border-top: 1px solid #F0F0F0;}
+.new-docs .docs-guide-list li {margin-bottom: 8px; color: #333; font-weight: 500; font-size: 14px; line-height: 20px; word-break: keep-all;}
+.new-docs .docs-guide-list li:last-child {margin-bottom: 0;}
+.new-docs .nd-caution {margin-top: 40px;}
+
+/* 대출 계좌 선택 */
+.acclist {max-height: 420px; overflow-y: auto;}
+.acclist-btn {display: flex; align-items: center; width: 100%; height: 84px; padding: 20px;}
+.acclist-info {position: relative; text-align: left;}
+.acclist-info.has-ico {padding-left: 52px;}
+.acclist-info:before {content: ''; position: absolute; top: 50%; left: 0; width: 40px; height: 40px; background-repeat: no-repeat; background-size: 100%; transform: translateY(-50%);}
+.acc-name {display: flex; align-items: center; color: #333; font-weight: 500; font-size: 16px; line-height: 24px; word-break: keep-all;}
+.acclist-item.checked .acc-name {position: relative; color: #FF5050; font-weight: 700;}
+.acclist-item.checked .acc-name:after {content: ''; display: inline-flex; width: 24px; height: 24px; margin-left: 8px; background: url(../img/checked-account.png) 0/100%;}
+.acc-num {display: block; margin-top: 2px; color: #888; font-size: 12px; line-height: 18px;}
+
+.acclist-info.busan:before {background-image: url(../img/bank/Label=BNK.png);} /* 부산은행 */
+.acclist-info.hana:before {background-image: url(../img/bank/hana.png);} /* 하나은행 */
+.acclist-info.kookse:before {background-image: url(../img/bank/Label=.png);} /* 국세청 */
+.acclist-info.pnb:before {background-image: url(../img/bank/Label=BNP.png);} /* 파리바 */
+.acclist-info.boa:before {background-image: url(../img/bank/Label=BOA.png);} /* 뱅크오브아메리카 */
+.acclist-info.china:before {background-image: url(../img/bank/Label=china.png);} /* 중국은행 */
+.acclist-info.china-st:before {background-image: url(../img/bank/Label=china-construction.png);} /* 중국건설은행 */
+.acclist-info.icbc:before {background-image: url(../img/bank/Label=icbc.png);} /* 중국공상은행 */
+.acclist-info.citi:before {background-image: url(../img/bank/Label=citi.png);} /* 시티은행 */
+.acclist-info.dongbu:before {background-image: url(../img/bank/Label=DB.png);} /* 동부 */
+.acclist-info.doich:before {background-image: url(../img/bank/Label=doich.png);} /* 도이치 */
+.acclist-info.hsbc:before {background-image: url(../img/bank/Label=HSBC.png);} /* HSBC */
+.acclist-info.kbi:before {background-image: url(../img/bank/Label=IBK.png);} /* 기업은행 */
+.acclist-info.imbank:before {background-image: url(../img/bank/Label=IM.png);} /* 아임뱅크 */
+.acclist-info.industry:before {background-image: url(../img/bank/Label=industry.png);} /* 산업은행 */
+.acclist-info.jeonbuk:before {background-image: url(../img/bank/Label=jeonbuk.png);} /* 전북은행 */
+.acclist-info.jp:before {background-image: url(../img/bank/Label=JP.png);} /* JP */
+.acclist-info.kakao:before {background-image: url(../img/bank/Label=kakao.png);} /* 카카오뱅크 */
+.acclist-info.kb:before {background-image: url(../img/bank/Label=KB.png);} /* 국민은행 */
+.acclist-info.kb2:before {background-image: url(../img/bank/Label=KB2.png);} /* 국민은행저축 */
+.acclist-info.kbank:before {background-image: url(../img/bank/Label=kbank.png);} /* 케이뱅크 */
+.acclist-info.korea:before {background-image: url(../img/bank/Label=kor.png);} /* 금융결제원 */
+.acclist-info.maul:before {background-image: url(../img/bank/Label=maul.png);} /* 새마을금고 */
+.acclist-info.mirae:before {background-image: url(../img/bank/Label=mirae.png);} /* 미래에셋 */
+.acclist-info.mountain:before {background-image: url(../img/bank/Label=mountain.png);} /* 산림조합 */
+.acclist-info.nh:before {background-image: url(../img/bank/Label=NH.png);} /* 농협 */
+.acclist-info.nh2:before {background-image: url(../img/bank/Label=nh2.png);} /* 지방농협 */
+.acclist-info.ok:before {background-image: url(../img/bank/Label=OK.png);} /* 오케이저축 */
+.acclist-info.post:before {background-image: url(../img/bank/Label=post.png);} /* 우체국 */
+.acclist-info.sb:before {background-image: url(../img/bank/Label=SB.png);} /* SB뱅크 */
+.acclist-info.sbi:before {background-image: url(../img/bank/Label=SBI.png);} /* SBI저축 */
+.acclist-info.sc:before {background-image: url(../img/bank/Label=SC.png);} /* SC제일 */
+.acclist-info.soohyup:before {background-image: url(../img/bank/Label=sh.png);} /* 수협 */
+.acclist-info.shinhan:before {background-image: url(../img/bank/Label=shinhan.png);} /* 신한 */
+.acclist-info.sinhyup:before {background-image: url(../img/bank/Label=sinhyup.png);} /* 신협 */
+.acclist-info.ssi:before {background-image: url(../img/bank/Label=ssi.png);} /* 상상인 */
+.acclist-info.woori:before {background-image: url(../img/bank/Label=woori.png);} /* 우리 */
+.acclist-info.toss:before {background-image: url(../img/bank/toss.png);} /* 토스 */
+
+/* 지역번호 선택 */
+.area-num-list {display: flex; flex-wrap: wrap; max-height: 320px; overflow-y: auto;}
+.area-num-list .num-item {width: 50%;}
+.area-num-list .num-item.full {width: 100%;}
+.area-num-list .num-btn {display: flex; align-items: center; height: 64px; width: 100%; padding: 0 20px;}
+.area-num-list .num-txt {color: #333; font-weight: 500; font-size: 16px; line-height: 24px;}
+.area-num-list .num-item.checked .num-txt {display: flex; align-items: center; color: #FF5050; font-weight: 700;}
+.area-num-list .num-item.checked .num-txt:after {content: ''; display: inline-flex; width: 24px; height: 24px; margin-left: 8px; background: url(../img/checked-account.png) 0/100%;}
+
+/* 내역, 히스토리 */
+.hsrt-box {padding: 20px;}
+.hsrt-box .hstr-list {padding: 20px; background: #F8F8F8; border-radius: 12px;}
+.hsrt-box .hstr-row {display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;}
+.hsrt-box .hstr-row:last-child {margin-bottom: 0px;}
+.hsrt-box .hstr-head {color: #616161; font-size: 14px; line-height: 20px;}
+.hsrt-box .hstr-data {color: #333; font-weight: 500; font-size: 16px; line-height: 20px;}
+.hsrt-box .hstr-data.point-color {color: #FF5050;}
+
+.hsrt-box + .range {padding:20px;}
+
+/* 기간표시 */
+.range {display: flex; justify-content: space-between; padding: 20px; border-bottom: 1px solid #F0F0F0;}
+.range .range-txt {color: #888; font-size: 12px; line-height: 1.5; word-break: keep-all;}
+.range .sort-txt {color: #616161; font-size: 14px; line-height: 1.5; word-break: keep-all;}
+
+/* 상세 리스트 */
+.detail-list {padding: 20px;}
+.detail-list .dl-item {margin-bottom: 28px;}
+.detail-list.bdb .dl-item {border-bottom: 1px solid #F0F0F0; padding-bottom: 20px;}
+.detail-list .dl-item:last-child {margin-bottom: 0; border-bottom: 0; padding-bottom: 0;}
+.detail-list .date-time {color: #888; font-size: 12px; line-height: 1.5; word-break: keep-all;}
+.detail-list .item-row {display: flex; justify-content: space-between; margin-top: 4px;}
+.detail-list .head {color: #888; font-size: 14px; line-height: 1.5; word-break: keep-all;}
+.detail-list .head.big {color: #333; font-size: 16px;}
+.detail-list .data {color: #333; font-size: 14px; line-height: 1.5; word-break: keep-all;}
+.detail-list .data.big {font-size: 16px;}
+.detail-list .data.point-color {color: #FF5050;}
+.detail-list .data.point-color2 {color: #0090F1;}
+
+.detail-list2 {padding-top: 16px; border-top: 1px solid #F0F0F0;}
+.detail-list2.bd0 {border: 0;}
+.detail-list2 .dl-item {display: flex; justify-content: space-between; margin-bottom: 8px;}
+.detail-list2 .dl-item:last-child {margin-bottom: 0;}
+.detail-list2 .head {color: #888; font-size: 14px; line-height: 1.5; word-break: keep-all;}
+.detail-list2 .data {color: #333; font-weight: 500; font-size: 14px; line-height: 1.5; word-break: keep-all; text-align: right;}
+.detail-list2 .data.point-color {color: #FF5050;}
+.detail-list2 .data.point-color2 {color: #0090F1;}
+.detail-list2 .data .money {padding-left: 20px; background-repeat: no-repeat; background-size: 16px; background-position: 0 50%;}
+
+.detail-list3 {padding-top: 20px;}
+.detail-list3.bd0 {border: 0;}
+.detail-list3 .dl-item {display: flex; justify-content: space-between; margin-bottom: 8px;}
+.detail-list3 .dl-item:last-child {margin-bottom: 0;}
+.detail-list3 .head {color: #888; font-size: 14px; line-height: 1.5; word-break: keep-all;}
+.detail-list3 .data {color: #333; font-weight: 500; font-size: 14px; line-height: 1.5; word-break: keep-all;}
+.detail-list3 .data.point-color {color: #FF5050;}
+.detail-list3 .data.point-color2 {color: #0090F1;}
+.detail-list3 .data .money {padding-left: 20px; background-repeat: no-repeat; background-size: 16px; background-position: 0 50%;}
+
+.detail-box {padding: 20px; border: 1px solid #F0F0F0; border-radius: 12px;}
+.detail-box + .detail-box {margin-top: 16px;}
+.detail-box .db-row {display: flex; justify-content: space-between; margin-bottom: 8px;}
+.detail-box .db-row:last-child {margin-bottom: 0;}
+.detail-box .head {color: #888; font-size: 14px; line-height: 1.5; word-break: keep-all;}
+.detail-box .data {color: #333; font-weight: 500; font-size: 14px; line-height: 1.5; word-break: keep-all;}
+.detail-box .data.point-color {color: #FF5050;}
+.detail-box .data.point-color2 {color: #0090F1;}
+
+
+/* 상단 이미지 가이드 */
+.top-img-guide {padding-top: 110px; background-repeat: no-repeat; background-position: 50% 0; background-size: 100px;}
+.top-img-guide.bg-fax-ok {background-image: url(../img/ic_guide21.png);} /* 팩스확인 */
+.top-img-guide.bg-fax-sent {background-image: url(../img/ic_guide22.png);}  /* 팩스전송완료 */
+.top-img-guide.bg-depositBalance {background-image: url(../img/ic_guide31.png);} /* 예금잔액조회 */
+
+.top-img-guide.bg-loanBalanceInquiry {background-image: url(../img/ic_guide101.png);} /* 대출잔액 조회 */
+.top-img-guide.bg-loanPrincipalInterest {background-image: url(../img/ic_guide102.png);} /* 대출 원리금 상환 조회 */
+
+.top-img-guide.bg-cardAvailableAmount {background-image: url(../img/ic_guide111.png);} /* 카드 사용 가능액 */
+.top-img-guide.bg-cardUsageHistory {background-image: url(../img/ic_guide112.png);} /* 카드이용내역 */
+.top-img-guide.bg-prepayment {background-image: url(../img/ic_guide113.png);} /* 선결재 */
+
+.top-img-guide.bg-lostPassbook {background-image: url(../img/ic_guide121.png);} /* 통장분실 */
+.top-img-guide.bg-lostPassbook2 {background-image: url(../img/ic_guide122.png);} /* 통장분실완료 */
+
+.top-img-guide.bg-autoTransfer {background-image: url(../img/ic_guide41.png);} /* 자동이체확인 */
+.top-img-guide.bg-autoTransferOk {background-image: url(../img/ic_guide42.png);} /* 자동이체완료 */
+.top-img-guide.bg-autoTransferCancel {background-image: url(../img/ic_guide43.png);} /* 자동이체조회/해제 */
+
+.top-img-guide.bg-exchangeRate {background-image: url(../img/ic_guide51.png);} /* 환율조회 */
+
+.top-img-guide.bg-fundAmount {background-image: url(../img/ic_guide61.png);} /* 펀드평가액 및 수익률 조회 */
+
+.top-img-guide.bg-cashierCheck {background-image: url(../img/ic_guide71.png);} /* 자기앞수표조회 확인 */
+.top-img-guide.bg-cashierCheckOk {background-image: url(../img/ic_guide72.png);} /* 자기앞수표조회 완료 */
+
+.top-img-guide.bg-installmentSavingsCancel {background-image: url(../img/ic_guide81.png);} /* 적립 거치식 해지 예상액 조회 */
+
+.top-img-guide.bg-maintenance {background-image: url(../img/ic_guide91.png);} /* 점검중 */
+.top-img-guide.bg-errorPage {background-image: url(../img/ic_guide92.png);} /* 페이지에러 */
+.top-img-guide.bg-errorAccount {background-image: url(../img/ic_guide93.png);} /* 계좌에러 */
+.top-img-guide.bg-error {background-image: url(../img/ic_guide94.png);} /* 에러 */
+
+.top-img-guide .ig-txt {color: #333; font-size: 17px; line-height: 1.5; word-break: keep-all;}
+
+/* 모바일 앱으로 보기 */
+.view-app {display: flex; align-items: center; justify-content: center; height: 40px; padding: 0 16px; border-radius: 12px; background: #FFF5F5;}
+.view-app .va-txt {position: relative; padding-left: 24px; color: #FF5050; font-size: 14px; line-height: 14px;}
+.view-app .va-txt:before {content: ''; position: absolute; top: 50%; left: 0; width: 20px; height: 20px; background: url(../img/view-app-bg.png) 0/100%; transform: translateY(-50%);}
+
+/* 은행 아이콘 */
+.bank-ico {position: relative; padding-left: 18px;}
+.bank-ico:before {content: ''; position: absolute; top: 50%; left: 0; width: 16px; height: 16px; background-repeat: no-repeat; background-size: 100%; transform: translateY(-50%);}
+.bank-ico.busan:before {background-image: url(../img/bank/Label=BNK.png);} /* 부산은행 */
+.bank-ico.hana:before {background-image: url(../img/bank/hana.png);} /* 하나은행 */
+.bank-ico.kookse:before {background-image: url(../img/bank/Label=.png);} /* 국세청 */
+.bank-ico.pnb:before {background-image: url(../img/bank/Label=BNP.png);} /* 파리바 */
+.bank-ico.boa:before {background-image: url(../img/bank/Label=BOA.png);} /* 뱅크오브아메리카 */
+.bank-ico.china:before {background-image: url(../img/bank/Label=china.png);} /* 중국은행 */
+.bank-ico.china-st:before {background-image: url(../img/bank/Label=china-construction.png);} /* 중국건설은행 */
+.bank-ico.icbc:before {background-image: url(../img/bank/Label=icbc.png);} /* 중국공상은행 */
+.bank-ico.citi:before {background-image: url(../img/bank/Label=citi.png);} /* 시티은행 */
+.bank-ico.dongbu:before {background-image: url(../img/bank/Label=DB.png);} /* 동부 */
+.bank-ico.doich:before {background-image: url(../img/bank/Label=doichpng);} /* 도이치 */
+.bank-ico.hsbc:before {background-image: url(../img/bank/Label=HSBC.png);} /* HSBC */
+.bank-ico.kbi:before {background-image: url(../img/bank/Label=IBK.png);} /* 기업은행 */
+.bank-ico.imbank:before {background-image: url(../img/bank/Label=IM.png);} /* 아임뱅크 */
+.bank-ico.industry:before {background-image: url(../img/bank/Label=industry.png);} /* 산업은행 */
+.bank-ico.jeonbuk:before {background-image: url(../img/bank/Label=jeonbuk.png);} /* 전북은행 */
+.bank-ico.jp:before {background-image: url(../img/bank/Label=JP.png);} /* JP */
+.bank-ico.kakao:before {background-image: url(../img/bank/Label=kakao.png);} /* 카카오뱅크 */
+.bank-ico.kb:before {background-image: url(../img/bank/Label=KB.png);} /* 국민은행 */
+.bank-ico.kb2:before {background-image: url(../img/bank/Label=KB2.png);} /* 국민은행저축 */
+.bank-ico.kbank:before {background-image: url(../img/bank/Label=kbank.png);} /* 케이뱅크 */
+.bank-ico.korea:before {background-image: url(../img/bank/Label=kor.png);} /* 금융결제원 */
+.bank-ico.maul:before {background-image: url(../img/bank/Label=maul.png);} /* 새마을금고 */
+.bank-ico.mirae:before {background-image: url(../img/bank/Label=mirae.png);} /* 미래에셋 */
+.bank-ico.mountain:before {background-image: url(../img/bank/Label=mountain.png);} /* 산림조합 */
+.bank-ico.nh:before {background-image: url(../img/bank/Label=NH.png);} /* 농협 */
+.bank-ico.nh2:before {background-image: url(../img/bank/Label=nh2.png);} /* 지방농협 */
+.bank-ico.ok:before {background-image: url(../img/bank/Label=OK.png);} /* 오케이저축 */
+.bank-ico.post:before {background-image: url(../img/bank/Label=post.png);} /* 우체국 */
+.bank-ico.sb:before {background-image: url(../img/bank/Label=SB.png);} /* SB뱅크 */
+.bank-ico.sbi:before {background-image: url(../img/bank/Label=SBI.png);} /* SBI저축 */
+.bank-ico.sc:before {background-image: url(../img/bank/Label=SC.png);} /* SC제일 */
+.bank-ico.soohyup:before {background-image: url(../img/bank/Label=sh.png);} /* 수협 */
+.bank-ico.shinhan:before {background-image: url(../img/bank/Label=shinhan.png);} /* 신한 */
+.bank-ico.sinhyup:before {background-image: url(../img/bank/Label=sinhyup.png);} /* 신협 */
+.bank-ico.ssi:before {background-image: url(../img/bank/Label=ssi.png);} /* 상상인 */
+.bank-ico.woori:before {background-image: url(../img/bank/Label=woori.png);} /* 우리 */
+.bank-ico.toss:before {background-image: url(../img/bank/toss.png);} /* 토스 */
+
+/* 바텀시트 셀렉트 */
+.bs-select {padding: 0 20px;}
+.bs-select .ig-txt {color: #333; font-weight: 500; font-size: 20px; line-height: 28px;}
+.bs-select .ig-txt.has-ico {padding-top: 44px; background-repeat: no-repeat; background-size: 40px;}
+.bs-select .ig-txt.ico-go-app {background-image: url(../img/bs-img-guide-ico2.png);} /* BS타이틀_모바일앱 뱅킹 */
+.bs-select .ig-txt.ico-other {background-image: url(../img/bs-img-guide-ico3.png);}  /* BS타이틀_다른업무 더보기 */
+.bs-select .sel-list {max-height: 400px; overflow-y: auto; padding-bottom: 12px;}
+.bs-select .sel-item {margin-bottom: 16px;}
+.bs-select .sel-item:last-child {margin-bottom: 0;}
+.bs-select .sel-btn {display: flex; align-items: center; width: 100%; height: 64px; padding: 0 16px;border: 1px solid #eee; border-radius: 12px; background: url(../img/comp_item_arrow.png) calc(100% - 16px) 50%/12px no-repeat;}
+.bs-select .sel-btn.active {border: 2px solid #333;}
+.bs-select .sel-txt {color: #333; font-weight: 500; font-size: 16px; line-height: 1.5; word-break: keep-all;}
+.bs-select .sel-txt.has-ico {position: relative; padding-left: 44px;}
+.bs-select .sel-txt.has-ico:before {content: ''; position: absolute; top: 50%; left: 0; width: 32px; height: 32px; transform: translateY(-50%); background-size: 100%;}
+
+/* 바텀시트 메뉴 아이콘 */
+.bs-select .sel-txt.ico-go-app:before {background-image: url(../img/bs-select-ico999.png);} /* 모바일뱅킹 앱 바로가기 */
+.bs-select .sel-txt.ico-depositTransaction:before {background-image: url(../img/bs-select-ico001.png);} /* 예금거래내역 조회 */
+.bs-select .sel-txt.ico-otherDepositBalance:before {background-image: url(../img/bs-select-ico002.png);} /* 다른 예금 잔액 조회 */
+.bs-select .sel-txt.ico-depositBalance:before {background-image: url(../img/bs-select-ico003.png);} /* 예금 잔액 조회 */
+.bs-select .sel-txt.ico-reissueDocu:before {background-image: url(../img/bs-select-ico004.png);} /* 재발급 서류 안내 */
+
+.bs-select .sel-txt.ico-loanTransactionHistory:before {background-image: url(../img/bs-select-ico011.png);} /* 대출 거래내역 조회*/
+.bs-select .sel-txt.ico-otherLoanBalance:before {background-image: url(../img/bs-select-ico012.png);} /* 다른 대출 잔액 조회*/
+.bs-select .sel-txt.ico-otherAccount:before {background-image: url(../img/bs-select-ico013.png);} /* 다른 계좌 조회*/
+.bs-select .sel-txt.ico-loanPrincipalInterest:before {background-image: url(../img/bs-select-ico014.png);} /* 대출 원리금 조회*/
+.bs-select .sel-txt.ico-virtualAccount:before {background-image: url(../img/bs-select-ico015.png);} /* 가상 계좌 조회*/
+
+.bs-select .sel-txt.ico-availableLimit:before {background-image: url(../img/bs-select-ico021.png);} /* 사용 가능 한도 조회*/
+.bs-select .sel-txt.ico-usageHistory:before {background-image: url(../img/bs-select-ico022.png);} /* 이용 내역  조회*/
+.bs-select .sel-txt.ico-prepayment:before {background-image: url(../img/bs-select-ico023.png);} /* 선결제*/
+.bs-select .sel-txt.ico-overdueAmount:before {background-image: url(../img/bs-select-ico024.png);} /* 연체 금액 조회*/
+.bs-select .sel-txt.ico-paymentScheduled:before {background-image: url(../img/bs-select-ico025.png);} /* 결제 예정 금액 조회*/
+.bs-select .sel-txt.ico-usageLimitChange:before {background-image: url(../img/bs-select-ico026.png);} /* 이용 한도 변경*/
+
+.bs-select .sel-txt.ico-availableAmount:before {background-image: url(../img/bs-select-ico031.png);} /* 사용 가능액 조회*/
+.bs-select .sel-txt.ico-sendBNK:before {background-image: url(../img/bs-select-ico032.png);} /* 부산은행 계좌로 송금*/
+
+.bs-select .sel-txt.ico-autoTransfeRregister:before {background-image: url(../img/bs-select-ico041.png);} /* 자동이체 추가등록 */
+.bs-select .sel-txt.ico-otherAutoTransfer:before {background-image: url(../img/bs-select-ico042.png);} /* 다른 출금 계좌 자동이체 등록 */
+.bs-select .sel-txt.ico-autoTransfer:before {background-image: url(../img/bs-select-ico043.png);} /* 자동이체 조회 */
+.bs-select .sel-txt.ico-otherAutoTransferCancel:before {background-image: url(../img/bs-select-ico044.png);} /* 다른 출금 계좌 자동이체 해지 */
+
+.bs-select .sel-txt.ico-otherYearEndTax:before {background-image: url(../img/bs-select-ico051.png);} /* 다른 연말 정산 증명서 알아보기 */
+
+
+.separated-box + .separated-box {border-top: 10px solid #F8F8F8;}
+
+.expand-card {border: 1px solid #e5e7eb; border-radius: 16px; background: #fff; padding: 20px 20px 0;}
+.expand-card.pd {padding: 20px;}
+/* summary 영역 */
+.expand-card__summary {display: flex; flex-direction: column; gap: 14px;}
+
+/* 상단 정보 */
+.expand-card__info {display: flex; flex-direction: column; gap: 4px;}
+.expand-card__info.ico {padding-left: 48px; background-repeat: no-repeat; background-size: 40px; background-position: 0 0;}
+.expand-card__info.ico-loan {background-image: url(../img/ico-loan.png);}       /* 대출가상계좌 조회 */
+.expand-card__info.ico-payment {background-image: url(../img/ico-payment.png);} /* 결제 예정금액 */
+.expand-card__info.ico-overdue {background-image: url(../img/ico-overdue.png);} /* 연체 금액 조회 */
+.expand-card__name {font-size: 16px; font-weight: 700; line-height: 1.5; color: #333; word-break: keep-all;}
+.expand-card__number {margin-top: 2px; font-size: 12px; line-height: 1.5; color: #888;}
+.expand-card__chip { display: flex; align-items: center; height: 20px; padding: 0 4px; font-size: 13px; font-weight: 500; color: #4C5FAD; border-radius: 4px; background: #ECECFD; }
+
+/* 금액 */
+.expand-card__amount {display: flex; align-items: center; justify-content: flex-end; margin-top: 12px; font-size: 22px; font-weight: 700; line-height: 1.5; color: #333;}
+.expand-card__unit {margin-left: 4px; color: #333; font-size: 16px; font-weight: 500;}
+
+/* 토글 버튼 */
+.expand-card__toggle {display: flex; align-items: center; justify-content: center; height: 48px; margin-top: 4px; font-size: 14px; color: #666; background: none; border: none; padding: 6px 0; cursor: pointer; border-top: 1px solid #F0F0F0;}
+.expand-card__toggle .txt {position: relative; padding-right: 20px; color: #616161; font-size: 14px; line-height: 1.5;}
+.expand-card__toggle .txt:after {content: ''; position: absolute; top: 50%; right: 0; width: 16px; height: 16px; background: url(../img/comp_combobox_arrow.png) 100% 50%/16px no-repeat; transform: translateY(-50%);}
+.expand-card.is-open .expand-card__toggle .txt:after {transform: translateY(-50%) rotate(180deg);}
+
+/* detail 영역 */
+.expand-card__detail {max-height: 0; overflow: hidden; opacity: 0; margin-top: 0; padding-top: 0; transition: max-height .35s ease, opacity .25s ease;}
+
+/* 열린 상태 */
+.expand-card.is-open .expand-card__detail {max-height: 500px; opacity: 1;}
+.expand-card__list {padding-top: 16px;}
+.expand-card__list .item {display: flex; justify-content: space-between; margin-bottom: 8px;}
+.expand-card__list .item:last-child {margin-bottom: 0;}
+.expand-card__list .head {color: #888; font-size: 14px; line-height: 1.5;}
+.expand-card__list .data {color: #333; font-weight: 500; font-size: 14px; line-height: 1.5;}
+.expand-card__list .data.point-color {color: #FF5050;}
+.expand-card__list .data.point-color2 {color: #0090F1;}
+
+/* 카드 선결제 */
+.card-payment .sb-txt1 {color: #333; font-weight: 500; font-size: 16px; line-height: 1.5; word-break: keep-all;}
+.card-payment .sb-txt2 {margin-top: 4px; color: #333; font-weight: 500; font-size: 30px; line-height: 1.33; word-break: keep-all;}
+.card-payment .sb-txt3 {margin-top: 8px; color: #616161; font-size: 14px; line-height: 1.5; word-break: keep-all;}
+.card-payment .detail-list2 {border-top: 1px solid #eee;}
+
+/* OTP */
+.otp {display: flex; flex-direction: column; position: relative; height: 100%; background: #3C3E49;}
+.otp .btn-cancel {position: absolute; top: 13px; right: 20px; font-size: 14px; line-height: 18px;}
+.otp .key-guide {display: flex; flex-direction: column; justify-content: center; flex: 1;}
+.otp .key-guide .guide-txt {color: #fff; font-weight: 500; font-size: 20px; line-height: 28px;}
+.otp .dot-row {display: flex; justify-content: center; gap: 0 18px; margin-top: 25px;}
+.otp .dots {width: 18px; height: 18px; background-color: #777880; border-radius: 50%;}
+.otp .dots.press {background-color: #FF5050;}
+.otp .dots.active {background-color: #fff;}
+.otp .dots.error {background-color: #0090F1;}
+.otp .key-pad {display: flex; flex-wrap: wrap; padding-bottom: 24px;}
+.otp .btn-key-pad {display: flex; justify-content: center; align-items: center; height: 67px; width: 33.33%; color: #fff; font-weight: 500; font-size: 24px;}
+.otp .btn-key-pad:active {background: #363842; -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important; -webkit-tap-highlight-color: transparent !important;}
+.otp .btn-key-pad.delete-all {font-size: 14px;}
+.otp .btn-key-pad.delete {background: url(../img/keypad-back.png) 50%/32px no-repeat;}
+
+/* 자동이체 주기 선택 */
+.period-row { display: flex; gap: 0 32px; padding: 0 20px; } 
+.period-col { position: relative; flex: 1; } 
+.period-col:first-child:after { content: ''; position: absolute; top: 0; right: -16px; width: 1px; height: 100%; background: #eee; } 
+.period-list { display: flex; flex-direction: column; gap: 8px 0; max-height: 232px; overflow-y: auto;}
+.period-list .pl-btn {display: flex; align-items: center; justify-content: center; width: 100%; height: 40px; border: 1px solid #eee; border-radius: 12px;}
+.period-list .pl-btn .txt {color: #888; font-weight: 500; font-size: 14px;}
+.period-list .pl-btn.active {border: 2px solid #333;}
+.period-list .pl-btn.active .txt {color: #333; font-weight: 700;}
+.period-list .pl-btn[disabled] {background-color: #F8F8F8;}
+
+/* 은행, 증권사 선택 */
+/* 은행 */
+.bank-list__btn.busan    {background-image: url(../img/bank/Label=BNK.png);}                /* 부산은행 */
+.bank-list__btn.hana     {background-image: url(../img/bank/hana.png);}                     /* 하나은행 */
+.bank-list__btn.kookse   {background-image: url(../img/bank/Label=.png);}                    /* 국세청 */
+.bank-list__btn.pnb      {background-image: url(../img/bank/Label=BNP.png);}                 /* 파리바 */
+.bank-list__btn.boa      {background-image: url(../img/bank/Label=BOA.png);}                 /* 뱅크오브아메리카 */
+.bank-list__btn.china    {background-image: url(../img/bank/Label=china.png);}               /* 중국은행 */
+.bank-list__btn.china-st {background-image: url(../img/bank/Label=china-construction.png);}  /* 중국건설은행 */
+.bank-list__btn.icbc     {background-image: url(../img/bank/Label=icbc.png);}                /* 중국공상은행 */
+.bank-list__btn.citi     {background-image: url(../img/bank/Label=citi.png);}                /* 시티은행 */
+.bank-list__btn.dongbu   {background-image: url(../img/bank/Label=DB.png);}                  /* 동부 */
+.bank-list__btn.doich    {background-image: url(../img/bank/Label=doich.png);}               /* 도이치 */
+.bank-list__btn.hsbc     {background-image: url(../img/bank/Label=HSBC.png);}                /* HSBC */
+.bank-list__btn.ibk      {background-image: url(../img/bank/Label=IBK.png);}                 /* 기업은행 */
+.bank-list__btn.imbank   {background-image: url(../img/bank/Label=IM.png);}                  /* 아임뱅크 */
+.bank-list__btn.industry {background-image: url(../img/bank/Label=industry.png);}            /* 산업은행 */
+.bank-list__btn.jeonbuk  {background-image: url(../img/bank/Label=jeonbuk.png);}             /* 전북은행 */
+.bank-list__btn.jp       {background-image: url(../img/bank/Label=JP.png);}                  /* JP */
+.bank-list__btn.kakao    {background-image: url(../img/bank/Label=kakao.png);}               /* 카카오뱅크 */
+.bank-list__btn.kb       {background-image: url(../img/bank/Label=KB.png);}                  /* 국민은행 */
+.bank-list__btn.kb2      {background-image: url(../img/bank/Label=KB2.png);}                 /* 국민은행저축 */
+.bank-list__btn.kbank    {background-image: url(../img/bank/Label=kbank.png);}               /* 케이뱅크 */
+.bank-list__btn.korea    {background-image: url(../img/bank/Label=kor.png);}                 /* 금융결제원 */
+.bank-list__btn.maul     {background-image: url(../img/bank/Label=maul.png);}                /* 새마을금고 */
+.bank-list__btn.mirae    {background-image: url(../img/bank/Label=mirae.png);}               /* 미래에셋 */
+.bank-list__btn.mountain {background-image: url(../img/bank/Label=mountain.png);}            /* 산림조합 */
+.bank-list__btn.nh       {background-image: url(../img/bank/Label=NH.png);}                  /* 농협 */
+.bank-list__btn.nh2      {background-image: url(../img/bank/Label=nh2.png);}                 /* 지방농협 */
+.bank-list__btn.ok       {background-image: url(../img/bank/Label=OK.png);}                  /* 오케이저축 */
+.bank-list__btn.post     {background-image: url(../img/bank/Label=post.png);}                /* 우체국 */
+.bank-list__btn.sb       {background-image: url(../img/bank/Label=SB.png);}                  /* SB뱅크 */
+.bank-list__btn.sbi      {background-image: url(../img/bank/Label=SBI.png);}                 /* SBI저축 */
+.bank-list__btn.sc       {background-image: url(../img/bank/Label=SC.png);}                  /* SC제일 */
+.bank-list__btn.soohyup  {background-image: url(../img/bank/Label=sh.png);}                  /* 수협 */
+.bank-list__btn.shinhan  {background-image: url(../img/bank/Label=shinhan.png);}             /* 신한 */
+.bank-list__btn.sinhyup  {background-image: url(../img/bank/Label=sinhyup.png);}             /* 신협 */
+.bank-list__btn.ssi      {background-image: url(../img/bank/Label=ssi.png);}                 /* 상상인 */
+.bank-list__btn.woori    {background-image: url(../img/bank/Label=woori.png);}               /* 우리 */
+.bank-list__btn.toss     {background-image: url(../img/bank/toss.png);}                      /* 토스 */
+
+/* 증권 */
+.bank-list__btn.stock-busan {background-image: url(../img/stock/bnk.png);}                   /* BNK투자증권 */
+.bank-list__btn.stock-shinhan {background-image: url(../img/stock/shinhan.png);}             /* 신한투자증권 */
+.bank-list__btn.stock-kyobo {background-image: url(../img/stock/kyobo.png);}                 /* 교보증권 */
+.bank-list__btn.stock-daol {background-image: url(../img/stock/daol.png);}                   /* 다올투자증권 */
+.bank-list__btn.stock-daesin {background-image: url(../img/stock/daesin.png);}               /* 대신증권 */
+.bank-list__btn.stock-meritz {background-image: url(../img/stock/meritz.png);}               /* 메리츠증권 */
+.bank-list__btn.stock-mirae {background-image: url(../img/stock/mirae.png);}                 /* 미래에셋증권 */
+.bank-list__btn.stock-bookook {background-image: url(../img/stock/bookook.png);}             /* 부국증권 */
+.bank-list__btn.stock-samsung {background-image: url(../img/stock/samsung.png);}             /* 삼성증권 */
+.bank-list__btn.stock-sinyoung {background-image: url(../img/stock/sinyoung.png);}           /* 신영증권 */
+.bank-list__btn.stock-sk {background-image: url(../img/stock/sk.png);}                       /* 에스케이증권 */
+.bank-list__btn.stock-uanta {background-image: url(../img/stock/uanta.png);}                 /* 유안타증권 */
+.bank-list__btn.stock-ujin {background-image: url(../img/stock/ujin.png);}                   /* 유진투자증권 */
+.bank-list__btn.stock-ebest {background-image: url(../img/stock/ebest.png);}                 /* 이베스트투자증권 */
+.bank-list__btn.stock-kakao {background-image: url(../img/stock/kakao.png);}                 /* 카카오페이증권 */
+.bank-list__btn.stock-cape {background-image: url(../img/stock/cape.png);}                   /* 케이프투자증권 */
+.bank-list__btn.stock-kium {background-image: url(../img/stock/kium.png);}                   /* 키움증권 */
+.bank-list__btn.stock-toss {background-image: url(../img/stock/toss.png);}                   /* 토스증권 */
+.bank-list__btn.stock-hankook-force {background-image: url(../img/stock/hankookforce.png);}  /* 한국포스증권 */
+.bank-list__btn.stock-hana {background-image: url(../img/stock/hana.png);}                   /* 하나증권 */
+.bank-list__btn.stock-high {background-image: url(../img/stock/dgb.png);}                    /* 하이투자증권 */
+.bank-list__btn.stock-hankook {background-image: url(../img/stock/hankook.png);}             /* 한국투자증권 */
+.bank-list__btn.stock-hanhwa {background-image: url(../img/stock/hanhwa.png);}               /* 한화투자증권 */
+.bank-list__btn.stock-hyundai-car {background-image: url(../img/stock/hyoundai-car.png);}    /* 현대차증권 */
+.bank-list__btn.stock-db {background-image: url(../img/stock/db.png);}                       /* DB증권 */
+.bank-list__btn.stock-ibk {background-image: url(../img/stock/ibk.png);}                     /* IBK투자증권 */
+.bank-list__btn.stock-kb {background-image: url(../img/stock/kb.png);}                       /* KB증권 */
+.bank-list__btn.stock-nh {background-image: url(../img/stock/nh.png);}                       /* NH투자증권 */
+.bank-list__btn.stock-sangsangin {background-image: url(../img/stock/sangsangin.png);}       /* 상상인증권 */
+
+.combobox__btn.ico {padding-left: 32px;}
+.combobox__btn.ico .combobox__btn-txt:before {content: ''; display: block; width: 24px; height: 24px; background-size: 24px; position: absolute; top: 50%; left: 0; transform: translateY(-50%);}
+.combobox__btn.busan .combobox__btn-txt:before {background-image: url(../img/bank/Label=BNK.png);}                    /* 부산은행 */
+.combobox__btn.hana .combobox__btn-txt:before {background-image: url(../img/bank/hana.png);}                          /* 하나은행 */
+.combobox__btn.kookse .combobox__btn-txt:before {background-image: url(../img/bank/Label=.png);}                      /* 국세청 */
+.combobox__btn.pnb .combobox__btn-txt:before {background-image: url(../img/bank/Label=BNP.png);}                      /* 파리바 */
+.combobox__btn.boa .combobox__btn-txt:before {background-image: url(../img/bank/Label=BOA.png);}                      /* 뱅크오브아메리카 */
+.combobox__btn.china .combobox__btn-txt:before {background-image: url(../img/bank/Label=china.png);}                  /* 중국은행 */
+.combobox__btn.china-st .combobox__btn-txt:before {background-image: url(../img/bank/Label=china-construction.png);}  /* 중국건설은행 */
+.combobox__btn.icbc .combobox__btn-txt:before {background-image: url(../img/bank/Label=icbc.png);}                    /* 중국공상은행 */
+.combobox__btn.citi .combobox__btn-txt:before {background-image: url(../img/bank/Label=citi.png);}                    /* 시티은행 */
+.combobox__btn.dongbu .combobox__btn-txt:before {background-image: url(../img/bank/Label=DB.png);}                    /* 동부 */
+.combobox__btn.doich .combobox__btn-txt:before {background-image: url(../img/bank/Label=doich.png);}                  /* 도이치 */
+.combobox__btn.hsbc .combobox__btn-txt:before {background-image: url(../img/bank/Label=HSBC.png);}                    /* HSBC */
+.combobox__btn.ibk .combobox__btn-txt:before {background-image: url(../img/bank/Label=IBK.png);}                      /* 기업은행 */
+.combobox__btn.imbank .combobox__btn-txt:before {background-image: url(../img/bank/Label=IM.png);}                    /* 아임뱅크 */
+.combobox__btn.industry .combobox__btn-txt:before {background-image: url(../img/bank/Label=industry.png);}            /* 산업은행 */
+.combobox__btn.jeonbuk .combobox__btn-txt:before {background-image: url(../img/bank/Label=jeonbuk.png);}              /* 전북은행 */
+.combobox__btn.jp .combobox__btn-txt:before {background-image: url(../img/bank/Label=JP.png);}                        /* JP */
+.combobox__btn.kakao .combobox__btn-txt:before {background-image: url(../img/bank/Label=kakao.png);}                  /* 카카오뱅크 */
+.combobox__btn.kb .combobox__btn-txt:before {background-image: url(../img/bank/Label=KB.png);}                        /* 국민은행 */
+.combobox__btn.kb2 .combobox__btn-txt:before {background-image: url(../img/bank/Label=KB2.png);}                      /* 국민은행저축 */
+.combobox__btn.kbank .combobox__btn-txt:before {background-image: url(../img/bank/Label=kbank.png);}                  /* 케이뱅크 */
+.combobox__btn.korea .combobox__btn-txt:before {background-image: url(../img/bank/Label=kor.png);}                    /* 금융결제원 */
+.combobox__btn.maul .combobox__btn-txt:before {background-image: url(../img/bank/Label=maul.png);}                    /* 새마을금고 */
+.combobox__btn.mirae .combobox__btn-txt:before {background-image: url(../img/bank/Label=mirae.png);}                  /* 미래에셋 */
+.combobox__btn.mountain .combobox__btn-txt:before {background-image: url(../img/bank/Label=mountain.png);}            /* 산림조합 */
+.combobox__btn.nh .combobox__btn-txt:before {background-image: url(../img/bank/Label=NH.png);}                        /* 농협 */
+.combobox__btn.nh2 .combobox__btn-txt:before {background-image: url(../img/bank/Label=nh2.png);}                      /* 지방농협 */
+.combobox__btn.ok .combobox__btn-txt:before {background-image: url(../img/bank/Label=OK.png);}                        /* 오케이저축 */
+.combobox__btn.post .combobox__btn-txt:before {background-image: url(../img/bank/Label=post.png);}                    /* 우체국 */
+.combobox__btn.sb .combobox__btn-txt:before {background-image: url(../img/bank/Label=SB.png);}                        /* SB뱅크 */
+.combobox__btn.sbi .combobox__btn-txt:before {background-image: url(../img/bank/Label=SBI.png);}                      /* SBI저축 */
+.combobox__btn.sc .combobox__btn-txt:before {background-image: url(../img/bank/Label=SC.png);}                        /* SC제일 */
+.combobox__btn.soohyup .combobox__btn-txt:before {background-image: url(../img/bank/Label=sh.png);}                   /* 수협 */
+.combobox__btn.shinhan .combobox__btn-txt:before {background-image: url(../img/bank/Label=shinhan.png);}              /* 신한 */
+.combobox__btn.sinhyup .combobox__btn-txt:before {background-image: url(../img/bank/Label=sinhyup.png);}              /* 신협 */
+.combobox__btn.ssi .combobox__btn-txt:before {background-image: url(../img/bank/Label=ssi.png);}                      /* 상상인 */
+.combobox__btn.woori .combobox__btn-txt:before {background-image: url(../img/bank/Label=woori.png);}                  /* 우리 */
+.combobox__btn.toss .combobox__btn-txt:before {background-image: url(../img/bank/toss.png);}                          /* 토스 */
+.combobox__btn.stock-busan .combobox__btn-txt:before {background-image: url(../img/stock/bnk.png);}                   /* BNK투자증권 */
+.combobox__btn.stock-shinhan .combobox__btn-txt:before {background-image: url(../img/stock/shinhan.png);}             /* 신한투자증권 */
+.combobox__btn.stock-kyobo .combobox__btn-txt:before {background-image: url(../img/stock/kyobo.png);}                 /* 교보증권 */
+.combobox__btn.stock-daol .combobox__btn-txt:before {background-image: url(../img/stock/daol.png);}                   /* 다올투자증권 */
+.combobox__btn.stock-daesin .combobox__btn-txt:before {background-image: url(../img/stock/daesin.png);}               /* 대신증권 */
+.combobox__btn.stock-meritz .combobox__btn-txt:before {background-image: url(../img/stock/meritz.png);}               /* 메리츠증권 */
+.combobox__btn.stock-mirae .combobox__btn-txt:before {background-image: url(../img/stock/mirae.png);}                 /* 미래에셋증권 */
+.combobox__btn.stock-bookook .combobox__btn-txt:before {background-image: url(../img/stock/bookook.png);}             /* 부국증권 */
+.combobox__btn.stock-samsung .combobox__btn-txt:before {background-image: url(../img/stock/samsung.png);}             /* 삼성증권 */
+.combobox__btn.stock-sinyoung .combobox__btn-txt:before {background-image: url(../img/stock/sinyoung.png);}           /* 신영증권 */
+.combobox__btn.stock-sk {background-image: url(../img/stock/sk.png);}                       /* 에스케이증권 */
+.combobox__btn.stock-uanta .combobox__btn-txt:before {background-image: url(../img/stock/uanta.png);}                 /* 유안타증권 */
+.combobox__btn.stock-ujin .combobox__btn-txt:before {background-image: url(../img/stock/ujin.png);}                   /* 유진투자증권 */
+.combobox__btn.stock-ebest .combobox__btn-txt:before {background-image: url(../img/stock/ebest.png);}                 /* 이베스트투자증권 */
+.combobox__btn.stock-kakao .combobox__btn-txt:before {background-image: url(../img/stock/kakao.png);}                 /* 카카오페이증권 */
+.combobox__btn.stock-cape .combobox__btn-txt:before {background-image: url(../img/stock/cape.png);}                   /* 케이프투자증권 */
+.combobox__btn.stock-kium .combobox__btn-txt:before {background-image: url(../img/stock/kium.png);}                   /* 키움증권 */
+.combobox__btn.stock-toss .combobox__btn-txt:before {background-image: url(../img/stock/toss.png);}                   /* 토스증권 */
+.combobox__btn.stock-hankook-force .combobox__btn-txt:before {background-image: url(../img/stock/hankookforce.png);}  /* 한국포스증권 */
+.combobox__btn.stock-hana .combobox__btn-txt:before {background-image: url(../img/stock/hana.png);}                   /* 하나증권 */
+.combobox__btn.stock-high .combobox__btn-txt:before {background-image: url(../img/stock/dgb.png);}                    /* 하이투자증권 */
+.combobox__btn.stock-hankook .combobox__btn-txt:before {background-image: url(../img/stock/hankook.png);}             /* 한국투자증권 */
+.combobox__btn.stock-hanhwa .combobox__btn-txt:before {background-image: url(../img/stock/hanhwa.png);}               /* 한화투자증권 */
+.combobox__btn.stock-hyundai-car .combobox__btn-txt:before {background-image: url(../img/stock/hyoundai-car.png);}    /* 현대차증권 */
+.combobox__btn.stock-db .combobox__btn-txt:before {background-image: url(../img/stock/db.png);}                       /* DB증권 */
+.combobox__btn.stock-ibk .combobox__btn-txt:before {background-image: url(../img/stock/ibk.png);}                     /* IBK투자증권 */
+.combobox__btn.stock-kb .combobox__btn-txt:before {background-image: url(../img/stock/kb.png);}                       /* KB증권 */
+.combobox__btn.stock-nh .combobox__btn-txt:before {background-image: url(../img/stock/nh.png);}                       /* NH투자증권 */
+.combobox__btn.stock-sangsangin .combobox__btn-txt:before {background-image: url(../img/stock/sangsangin.png);}       /* 상상인증권 */
+
+
+.tbl {width: 100%; border-top: 1px solid #d5d5d5;}
+.tbl tbody tr {border-bottom: 1px solid #d5d5d5;}
+.tbl tbody th {color: #333; font-weight: 500; font-size: 12px; line-height: 1.5; background: #F8F8F8;}
+.tbl td {padding: 12px;}
+.num-list li {margin-bottom: 4px;}
+.num-list li:last-child {margin-bottom: 0;}
+
+/* 기본 리스트 스타일 */
+.agree-list { list-style: none; padding: 0; }
+.agree-item { border: 1px solid #eee; border-radius: 12px; margin-bottom: 12px; background: #fff; overflow: hidden; transition: all 0.3s; box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.03); }
+
+/* 헤더 영역 */
+.agree-header { display: flex; align-items: center; justify-content: space-between; padding: 20px; }
+
+/* 토글 버튼 (화살표) */
+.btn-toggle { 
+  width: 24px; height: 24px; border: none; background: url(../img/checkbox-drop-down-arrow.png) 50%/16px no-repeat; 
+  cursor: pointer; transition: transform 0.3s;
+}
+.agree-item.is-active { border-color: #f2f2f2; }
+.agree-item.is-active .btn-toggle { transform: rotate(180deg); }
+
+/* 아코디언 내용 영역 */
+.agree-content { padding: 0 20px 20px; }
+.agree-content[hidden] { display: none; }
+
+.sub-agree-list { list-style: none; padding-top: 10px; }
+.sub-agree-list li { display: flex; justify-content: space-between; padding: 12px 0; }
+
+.agree-group .btn-link { position: relative; top: -4px; width: 24px; height: 24px; background: url(../img/btn-link.png) 50%/12px no-repeat; }
+
+/* 풀팝업 */
+.full-popup { display: flex; flex-direction: column; position: fixed; top: 0; left: 0; width: 100%; height: 100%; }
+.full-popup .fp-header { display: flex; align-items: center; height: 58px; min-height: 58px; padding: 0 20px; }
+.full-popup .fp-tit { color: #333; font-weight: 700; font-size: 18px; line-height: 1.5; }
+.full-popup .fp-content { display: flex; flex-direction: column; flex: 1; height: calc(100% - 58px); }
+.full-popup .fp-tab { display: flex; gap: 0 20px; padding: 10px 20px 0; box-shadow: inset 0 -4px 0 0 #F0F0F0; overflow-x: auto; }
+.full-popup .fp-tab-btn { position: relative; padding-bottom: 12px; color: #888; font-weight: 500; font-size: 16px; line-height: 1.5; white-space: nowrap; }
+.full-popup .fp-tab-btn.active { color: #333; font-weight: 700; }
+.full-popup .fp-tab-btn.active:after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: #333; }
+.full-popup .fp-tab-cont { display: none; flex: 1; padding: 28px 20px; overflow-y: auto; max-height: calc(100% - 60px); }
+.full-popup .fp-tab-cont.show { display: block; }
+.full-popup .fp-tab-cont.agree { color: #616161; font-size: 14px; line-height: 1.5; white-space: pre-line;}
+.full-popup .fp-close { position: absolute; top: 20px; right: 20px; color: #FF5050; font-size: 12px; line-height: 1.5; }
+
+
+.repayment-page .hsrt-box {padding: 20px 20px 0 20px;}
+.repayment-page .content-body {display: flex; flex-direction: column; height: 100vh;}
+.repayment-page .range {position: sticky; top: 0; background: #fff; z-index: 1000;}
+.repayment-page .detail-list {flex: 1; overflow-y: auto;}
+

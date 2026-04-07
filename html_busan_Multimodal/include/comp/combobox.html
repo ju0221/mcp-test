@@ -1,0 +1,254 @@
+<div id="comboBox" class="ex-wrap-row"">
+    <div class="ex-wrap">
+        <h2 class="ex-tit">ComboBox</h2>
+
+        <div class="ex-row">
+            <div class="combobox" data-type="selectAccount">
+                <button type="button" class="combobox__btn" onclick="openBottomSheet('selectAccount')"; style="height: 64px;">
+                    <span class="combobox__btn-txt">계좌를 선택해 주세요.</span>
+                </button>
+
+                <div id="selectAccount" class="bottom-sheet">
+                    <div class="bs-bg">
+                        <div class="bs-inner">
+                            <div class="bs-header">
+                                <div class="bs-header-row">
+                                    <h3 class="bs-tit">대출 계좌 선택</h3>
+
+                                    <button class="bs-close" title="대출 계좌 선택 닫기" onclick="closeBottomSheet('selectAccount');"><img src="../img/comp_bs_header_close.png" alt="닫기"></button>
+                                </div>
+                            </div>
+
+                            <div class="bs-cont">
+                                    <ul class="acclist">
+                                    <li class="acclist-item">
+                                        <button type="button" class="acclist-btn">
+                                            <div class="acclist-info has-ico busan">
+                                                <span class="acc-name">ONE 장기근속 직장인 우대대출</span>
+                                                <span class="acc-num">11-0236-5785-01</span>
+                                            </div>
+                                        </button>
+                                    </li>
+                                    <li class="acclist-item">
+                                        <button type="button" class="acclist-btn">
+                                            <div class="acclist-info has-ico busan">
+                                                <span class="acc-name">BNK공무원 가계자금대출</span>
+                                                <span class="acc-num">11-0236-5785-01</span>
+                                            </div>
+                                        </button>
+                                    </li>
+                                    <li class="acclist-item">
+                                        <button type="button" class="acclist-btn">
+                                            <div class="acclist-info has-ico shinhan">
+                                                <span class="acc-name">ONE 주택담보대출</span>
+                                                <span class="acc-num">11-0236-5785-01</span>
+                                            </div>
+                                        </button>
+                                    </li>
+                                    <li class="acclist-item">
+                                        <button type="button" class="acclist-btn">
+                                            <div class="acclist-info has-ico busan">
+                                                <span class="acc-name">비상금 동백론</span>
+                                                <span class="acc-num">11-0236-5785-01</span>
+                                            </div>
+                                        </button>
+                                    </li>
+                                    <li class="acclist-item">
+                                        <button type="button" class="acclist-btn">
+                                            <div class="acclist-info has-ico kbank">
+                                                <span class="acc-name">BNK프랜차이즈 부동산담보대출</span>
+                                                <span class="acc-num">11-0236-5785-01</span>
+                                            </div>
+                                        </button>
+                                    </li>
+                                    <li class="acclist-item">
+                                        <button type="button" class="acclist-btn">
+                                            <div class="acclist-info has-ico kakao">
+                                                <span class="acc-name">카카오뱅크</span>
+                                                <span class="acc-num">11-0236-5785-01</span>
+                                            </div>
+                                        </button>
+                                    </li>
+                                    <li class="acclist-item">
+                                        <button type="button" class="acclist-btn">
+                                            <div class="acclist-info has-ico kbank">
+                                                <span class="acc-name">케이뱅크</span>
+                                                <span class="acc-num">11-0236-5785-01</span>
+                                            </div>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ex-row">
+            <div class="combobox" data-type="areaNumber">
+                <div class="d-flex aic gap-h-2x">
+                    <button type="button" class="combobox__btn" onclick="openBottomSheet('areaNum')"; style="width: 80px;">
+                        <span class="combobox__btn-txt">지역번호</span>
+                    </button>
+                    
+                    <div class="cp-inp flex1">
+                        <input type="text" id="faxnum" class="cp-inp-text" placeholder="팩스번호를 입력하세요.를 입력하세요." title="팩스번호를 입력하세요. 입력">
+                        <button class="cp-inp-delete" title="입력된 내용 삭제"><img src="../img/comp_inp_delete.png" alt="삭제"></button>
+                    </div>
+                </div>
+
+                <div id="areaNum" class="bottom-sheet">
+                    <div class="bs-bg">
+                        <div class="bs-inner">
+                            <div class="bs-header">
+                                <div class="bs-header-row">
+                                    <h3 class="bs-tit">지역번호 선택</h3>
+
+                                    <button class="bs-close" title="지역번호 선택 선택 닫기" onclick="closeBottomSheet('areaNum');"><img src="../img/comp_bs_header_close.png" alt="닫기"></button>
+                                </div>
+                            </div>
+
+                            <div class="bs-cont">
+                                <ul class="area-num-list">
+                                    <li class="num-item">
+                                        <button type="button" class="num-btn" title="번호 선택하기">
+                                            <span class="num-txt">서울(02)</span>
+                                        </button>
+                                    </li>
+                                    <li class="num-item">
+                                        <button type="button" class="num-btn" title="번호 선택하기">
+                                            <span class="num-txt">경기(031)</span>
+                                        </button>
+                                    </li>
+                                    <li class="num-item">
+                                        <button type="button" class="num-btn" title="번호 선택하기">
+                                            <span class="num-txt">인천(032)</span>
+                                        </button>
+                                    </li>
+                                    <li class="num-item">
+                                        <button type="button" class="num-btn" title="번호 선택하기">
+                                            <span class="num-txt">강원(033)</span>
+                                        </button>
+                                    </li>
+                                    <li class="num-item">
+                                        <button type="button" class="num-btn" title="번호 선택하기">
+                                            <span class="num-txt">충남(041)</span>
+                                        </button>
+                                    </li>
+                                    <li class="num-item">
+                                        <button type="button" class="num-btn" title="번호 선택하기">
+                                            <span class="num-txt">대전(042)</span>
+                                        </button>
+                                    </li>
+                                    <li class="num-item">
+                                        <button type="button" class="num-btn" title="번호 선택하기">
+                                            <span class="num-txt">충북(043)</span>
+                                        </button>
+                                    </li>
+                                    <li class="num-item">
+                                        <button type="button" class="num-btn" title="번호 선택하기">
+                                            <span class="num-txt">세종(044)</span>
+                                        </button>
+                                    </li>
+                                    <li class="num-item">
+                                        <button type="button" class="num-btn" title="번호 선택하기">
+                                            <span class="num-txt">부산(051)</span>
+                                        </button>
+                                    </li>
+                                    <li class="num-item">
+                                        <button type="button" class="num-btn" title="번호 선택하기">
+                                            <span class="num-txt">울산(052)</span>
+                                        </button>
+                                    </li>
+                                    <li class="num-item">
+                                        <button type="button" class="num-btn" title="번호 선택하기">
+                                            <span class="num-txt">대구(053)</span>
+                                        </button>
+                                    </li>
+                                    <li class="num-item">
+                                        <button type="button" class="num-btn" title="번호 선택하기">
+                                            <span class="num-txt">경북(054)</span>
+                                        </button>
+                                    </li>
+                                    <li class="num-item">
+                                        <button type="button" class="num-btn" title="번호 선택하기">
+                                            <span class="num-txt">경남(055)</span>
+                                        </button>
+                                    </li>
+                                    <li class="num-item">
+                                        <button type="button" class="num-btn" title="번호 선택하기">
+                                            <span class="num-txt">전남(061)</span>
+                                        </button>
+                                    </li>
+                                    <li class="num-item">
+                                        <button type="button" class="num-btn" title="번호 선택하기">
+                                            <span class="num-txt">광주(062)</span>
+                                        </button>
+                                    </li>
+                                    <li class="num-item">
+                                        <button type="button" class="num-btn" title="번호 선택하기">
+                                            <span class="num-txt">전북(063)</span>
+                                        </button>
+                                    </li>
+                                    <li class="num-item">
+                                        <button type="button" class="num-btn" title="번호 선택하기">
+                                            <span class="num-txt">제주(064)</span>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ex-row">
+            <div class="combobox" data-type="selectBank">
+                <button type="button" class="combobox__btn" onclick="openBottomSheet('selectBank')";>
+                    <span class="combobox__btn-txt">은행(증권사)를 선택해 주세요.</span>
+                </button>
+
+                <div id="selectBank" class="bottom-sheet">
+                    <div class="bs-bg">
+                        <div class="bs-inner">
+                            <div class="bs-header">
+                                <div class="bs-header-row">
+                                    <h3 class="bs-tit">입금은행(증권사) 선택</h3>
+
+                                    <button class="bs-close" title="입금은행(증권사) 선택 닫기" onclick="closeBottomSheet('selectBank');"><img src="../img/comp_bs_header_close.png" alt="닫기"></button>
+                                </div>
+                            </div>
+
+                            <div class="bs-cont">
+                                <div class="pd-h20">
+                                    <div class="tab-group">
+                                        <button class="tab active" data-target="tabBank" title="옵션2 보기">
+                                            <span class="tab__txt">은행</span>
+                                        </button>
+                                        <button class="tab" data-target="tabStock" title="옵션2 보기">
+                                            <span class="tab__txt">증권사</span>
+                                        </button>
+                                    </div>
+
+                                    <div id="tabBank" class="tab-cont mt4x">
+                                        <ul class="bank-list">
+                                            <li class="bank-list__item">
+                                                <button type="button" class="bank-list__btn ico busan" title="부산 선택">
+                                                    <span class="bank-list__txt">부산</span>
+                                                </button>
+                                            </li>
+                                            <li class="bank-list__item">
+                                                <button type="button" class="bank-list__btn ico busan" title="경남 선택">
+                                                    <span class="bank-list__txt">경남</span>
+                                                </button>
+                                            </li>
+                                            <li class="bank-list__item">
+                                                <button type="button" class="bank-list__btn ico kb" title="국민 선택">
+                                                    <span class="bank-list__txt">국민</span>
+                                                </button>
+                                            </li>
+                                            <li class="bank-list__item">
+                                                <button type="button" class="bank-list__btn ico ibk" title="기업 선택">
+                            

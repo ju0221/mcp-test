@@ -1,0 +1,157 @@
+<? include('../include/head_inc.html');?>
+<style>
+	html {overflow: auto;}
+    .comp-wrap {display: flex;}
+    .comp-nav {background: #FF5050;}
+    .comp-nav .comp-list {position: sticky; top: 0; height: 100vh; padding: 30px; overflow-y: auto;}
+    .comp-nav .cl-item {margin-bottom: 10px;}
+    .comp-nav .cl-item:last-child {margin-bottom: 0;}
+    .comp-nav .cl-target {color: #fff; font-size: 20px; white-space: nowrap;}
+    .comp-nav .cl-target:hover {text-decoration: underline;}
+	.component-ex {padding: 50px;}
+	.ex-wrap-row {display: flex; flex-wrap: wrap; gap: 30px; width: 100%; padding-top: 30px; padding-bottom: 20px; border-bottom: 1px solid #ddd;}
+	.ex-wrap-row.d-block {display: block;}
+	.ex-wrap-row.half {width: calc(50vw - 50px);}
+	.ex-wrap-row:last-child {border-bottom: 0;}
+	.ex-wrap-row:first-child {margin-top: 0;}
+	.ex-wrap {min-width: 335px; max-width: calc(33.33vw - 50px); flex: 1; box-sizing: border-box;}
+	.ex-wrap:first-child {margin-top: 0;}
+	.ex-wrap.full { max-width: initial;}
+	.ex-wrap .ex-tit {margin-bottom: 16px; font-size: 30px;}
+	.ex-row {display: flex; margin-top: 20px; gap: 16px;}
+	.ex-row.half {width: 50%;}
+	.ex-col {flex: 1;}
+	.tab-item.ico:before {background-image: url(../img/comp_item_temp.png);}
+
+	@media screen and (max-width: 768px) {
+		.component-ex {padding: 20px;}
+	}
+</style>
+
+<body>
+    <div class="comp-wrap">
+        <? include('../include/comp/nav.html');?>
+
+        <div class="component-ex">
+
+            <? include('../include/comp/header.html');?>
+    
+            <? include('../include/comp/title.html');?>
+
+            <? include('../include/comp/bottom_sheet_header.html');?>
+
+            <? include('../include/comp/bottom_sheet_list_item.html');?>
+
+            <? include('../include/comp/button52.html');?>
+
+            <? include('../include/comp/buttons.html');?>
+
+            <? include('../include/comp/tab.html');?>
+
+            <? include('../include/comp/info_txt.html');?>
+
+            <? include('../include/comp/input.html');?>
+
+            <? include('../include/comp/range_picker.html');?>
+
+            <? include('../include/comp/combobox.html');?>
+
+            <? include('../include/comp/checkbox.html');?>
+
+            <? include('../include/comp/card.html');?>
+        </div>
+    </div>
+
+    <div class="dp-sheet" id="dpSheet" aria-hidden="true">
+        <div class="dp-sheet__dim" data-sheet-close></div>
+
+        <div class="dp-sheet__panel" role="dialog" aria-modal="true" aria-labelledby="dpSheetTitle">
+            <div class="dp-sheet__handle"></div>
+
+            <div class="dp-sheet__head">
+                <div class="bs-header">
+                    <div class="bs-header__inner">
+                    <h3 class="bs-header__tit" id="dpSheetTitle">날짜 선택</h3>
+
+                    <button type="button" class="bs-header__close" title="날짜 선택 닫기" data-sheet-close>
+                        <img src="../img/comp_bs_header_close.png" alt="닫기">
+                    </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dp-sheet__calendar" id="dpCalendarWrap"></div>
+        </div>
+    </div>
+    <!-- // dp-sheet end -->
+	 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ko.js"></script>
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+		// 데이트 피커
+        const dpSheet = new DatePickerBottomSheet({
+            jumpMonthUnit: 12,
+            targetTextSelector: null,
+            globalMinDate: '2024-01-01', // 전체 최소 선택 가능일
+            globalMaxDate: '2026-12-31'  // 전체 최대 선택 가능일
+        });
+
+        console.log('dpSheet instance:', dpSheet);
+        window.dpSheetInstance = dpSheet;
+        // 데이트 피커
+
+		// 금액입력
+		const inpMoney = new EmptyClassToggler('.cp-inp.money');
+
+		// 탭 컴포넌트
+		new TabSelector('.cp-tab');
+
+		// 콤보박스
+		const conboBox = new InitSelectToggle('.cp-select');
+
+		// 전체동의
+		new AllAgree('.cp-all-agree');
+	});
+
+	function scrollToHashTarget() {
+		if (!location.hash) return;
+		const el = document.querySelector(location.hash);
+		if (!el) return;
+
+		// 레이아웃 확정 뒤에 2번 정도 재시도
+		requestAnimationFrame(() => {
+		el.scrollIntoView({ block: 'start', behavior: 'auto' });
+		requestAnimationFrame(() => {
+			el.scrollIntoView({ block: 'start', behavior: 'auto' });
+		});
+		});
+	}
+
+	window.addEventListener('load', () => {
+		setTimeout(scrollToHashTarget, 0);
+	});
+
+	window.addEventListener('hashchange', scrollToHashTarget);
+
+    document.querySelectorAll('.cl-target').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault(); // 기본 이동 동작 방지
+
+            // 1. 클릭한 요소의 href 속성값 가져오기 (#header 등)
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+
+            // 2. 해당 요소가 존재하는지 확인 후 애니메이션 이동
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth', // 부드러운 스크롤 애니메이션
+                    block: 'start'      // 요소의 시작 지점으로 이동
+                });
+            }
+        });
+    });    
+</script>
+</body>
+</html>

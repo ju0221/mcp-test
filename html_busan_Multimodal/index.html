@@ -1,0 +1,1181 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=1200">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"> -->
+  <meta name="format-detection" content="telephone=no">
+  <title>BNK부산은행 멀티모달 IA</title>
+  <!-- Icons -->
+  <link rel="shortcut icon" href="./images/layout/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" type="image/png" sizes="192x192" href="./images/layout/android-icon-192x192.png">
+  <!-- Styles -->
+
+  <style type="text/css">
+    h1 {
+      padding: 20px;
+    }
+
+    h2 {
+      padding: 10px 0 10px 15px;
+      font-size: 13px;
+      border: 1px solid #444;
+      border-bottom: none;
+      background: #595959;
+      color: #fff;
+    }
+
+    .contents {
+      padding: 20px;
+    }
+
+    div.cont {
+      margin-bottom: 20px;
+      border-top: 1px solid #444;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      border-spacing: 0;
+    }
+
+    table tbody tr:hover {
+      background: #d9e8f7;
+    }
+
+    table thead th {
+      padding: 7px 5px;
+      border: 1px solid #ccc;
+      background: #eee;
+      font-size: 13px;
+    }
+
+    table tbody td {
+      padding: 7px 5px;
+      border: 1px solid #ccc;
+      text-align: left;
+      color: #898989;
+    }
+
+    table tbody td.left,
+    table tbody tr.left td {
+      padding: 7px 10px;
+      text-align: left;
+    }
+
+    table tbody tr td {
+      background: #e4e4e4;
+      color: #898989;
+    }
+
+    table tbody td.url {
+      padding: 7px 10px;
+      text-align: left;
+    }
+
+    table tbody td.url+td {
+      text-align: center;
+    }
+
+    table tbody tr.ing td {
+      background: #c9e9cf;
+      color: #444;
+    }
+
+    table tbody tr.modify td {
+      background: #fbeeed;
+      color: #444;
+    }
+
+    table tbody tr.add td {
+      background: #fff4d4;
+    }
+
+    table tbody tr.end td {
+      background: none;
+      color: #898989;
+    }
+
+    table tbody tr.del td {
+      text-decoration: line-through;
+    }
+
+    table tbody+tbody::before {
+      content: '↑WEB / ↓APP';
+      height: 10px;
+      display: table-row;
+    }
+
+    table tbody.common+tbody::before {
+      content: '↑COMMON / ↓APP' !important;
+      height: 10px !important;
+      display: table-row !important;
+    }
+
+    .issue {
+      margin-bottom: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+
+    .issue p {
+      font-size: 14px;
+      font-weight: bold;
+      color: #333
+    }
+
+    .issue ol {
+      padding-left: 24px;
+      font-size: 12px;
+      list-style-type: decimal-leading-zero;
+    }
+
+    .color_guide {
+      padding: 10px 0;
+      overflow: hidden;
+    }
+
+    .color_guide p {
+      font-size: 12px;
+      color: #333
+    }
+
+    .color_guide i {
+      font-style: normal;
+      font-weight: bold;
+    }
+
+    .color_guide span {
+      margin-right: 30px;
+      font-size: 12px;
+      position: relative;
+      display: block;
+      padding-left: 20px;
+      float: left;
+    }
+
+    .color_guide span:after {
+      content: "";
+      width: 10px;
+      height: 10px;
+      display: block;
+      position: absolute;
+      left: 2px;
+      top: 2px;
+      border: 1px solid #333;
+      background: #e4e4e4;
+    }
+
+    .color_guide .ing:after {
+      background: #c9e9cf;
+    }
+
+    .color_guide .modify:after {
+      background: #fbeeed;
+    }
+
+    .color_guide .add:after {
+      background: #fff4d4;
+    }
+
+    .color_guide .end:after {
+      background: none;
+    }
+
+    .update {
+      position: absolute;
+      right: 31px;
+      top: 22px;
+      font-weight: normal;
+      font-size: 12px;
+      font-family: sans-serif;
+    }
+
+    .control {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .control label {
+      padding: 8px 30px;
+      float: left;
+      font-size: 14px;
+      font-weight: bold;
+      border: solid #ccc;
+      border-width: 1px 1px 1px 0;
+      background: #eee;
+      overflow: hidden;
+    }
+
+    .control input:first-child+label {
+      border-left-width: 1px;
+    }
+
+    .control input:checked+label {
+      background: #595959;
+      color: #fff;
+    }
+
+    .control input {
+      position: absolute;
+      left: -99999px;
+    }
+
+    body.web tbody.web,
+    body.app tbody.app {
+      display: none;
+    }
+
+    body.web tbody.app::before,
+    body.app tbody.web::before {
+      content: none;
+      height: 0;
+      display: none;
+    }
+
+    ins {
+      display: block;
+      color: blue;
+    }
+
+    a:focus {
+      color: red;
+    }
+	
+	pd30 { 
+	  padding-left:30px;
+	  }
+  </style>
+  <!-- Scripts -->
+  <script type="text/javascript" src="./js/index_jquery-1.11.3.js"></script>
+</head>
+
+<body>
+  <h1>BNK부산은행 멀티모달 IA</h1>
+  <strong class="update">Update: 2026/04/07</strong>
+  <!-- container -->
+  <div id="container">
+    <!-- contents -->
+    <div class="contents">
+      <div class="issue">
+        <p>이슈/전달사항</p>
+        <p>[2026.03.17] 화면설계서 8p~21p(사용자안내~서류안내) 퍼블리싱 파일 공유 / html_busan_Multimodal_260317.zip</p>
+        <p>[2026.03.18] 화면설계서 22p~28p(팩스서비스) 퍼블리싱 파일 공유 / html_busan_Multimodal_260318.zip</p>
+        <p>[2026.03.19] 화면설계서 29p~30p(여금잔액, 예금거래내역) / 50p~56p(자동이체) 퍼블리싱 파일 공유 / html_busan_Multimodal_260319.zip</p>
+        <p>[2026.03.20] 화면설계서 57p~72p(자동이체, 자기앞수표, 펀드, 환율, 인증서, 연말정산, 공통) 퍼블리싱 파일 공유 / html_busan_Multimodal_260320.zip</p>
+        <p>[2026.03.24] 1차 완료된 화면별 퍼블리싱 파일 공유 / html_busan_Multimodal_260324.zip</p>
+        <p>[2026.03.26] 오류메시지에 대한 예시 정리 / html_busan_Multimodal_260326.zip</p>
+        <p>[2026.03.27] 서류안내, 연말정산 메뉴트리 아이콘 공유 / html_busan_Multimodal_260327.zip</p>
+        <p>[2026.04.01] 약관관련 페이지 공유 / html_busan_Multimodal_260401.zip</p>
+        <p>[2026.04.02] 내역 스크롤화면에서 기간부분 상단고정 페이지 공유 / html_busan_Multimodal_260402.zip</p>
+      </div>
+      <table>
+        <caption>
+        </caption>
+        <colgroup>
+          <col style="width: 600px;">
+          <col style="width: auto;">
+          <col style="width: auto;">
+          <col style="width: auto;">
+          <col style="width: auto;">
+          <col style="width: auto;">
+        </colgroup>
+        <thead>
+          <tr>
+            <th width="27%" scope="col">1 Depth</th>
+            <th width="7%" scope="col">2 Depth</th>
+            <th width="15%" scope="col">3 Depth</th>
+            <th width="29%" scope="col">URL</th>
+            <th width="4%" scope="col">기타</th>
+            <th width="18%" scope="col">코멘트</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="end">
+            <td colspan="6">■ 비즈니스 경로</td>
+          </tr>
+          <tr class="end">
+            <td>0008_UI_BOT_001_사용자 인증 주민6, 사업자, 계좌, 계좌4</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0008_UI_BOT_001.html" target="_blank">./page/0008_UI_BOT_001.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.16]</td>
+          </tr>
+          <tr class="end">
+            <td>0009_UI_BOT_002_사용자 인증 주민13, 사업자, 계좌, 계좌4</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+           <td class="url"><a href="./page/0009_UI_BOT_002.html" target="_blank">./page/0009_UI_BOT_002.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.16]</td>
+          </tr>
+          <tr class="end">
+            <td>0010_UI_BOT_003_사용자 인증 주민6, 계좌, 계좌4</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0010_UI_BOT_003.html" target="_blank">./page/0010_UI_BOT_003.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.16]</td>
+          </tr>
+          <tr class="end">
+            <td>0011_UI_BOT_004_사용자 인증 주민6, 사업자, 카드, 카드4</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0011_UI_BOT_004.html" target="_blank">./page/0011_UI_BOT_004.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.16]</td>
+          </tr>
+          <tr class="end">
+            <td>0012_UI_BOT_005_카드 거래 내역 조회 구분</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0012_UI_BOT_005.html" target="_blank">./page/0012_UI_BOT_005.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.16]</td>
+          </tr>
+          <tr class="end">
+            <td>0013_UI_BOT_006_사용자 인증 주민6, 카드, 카드4</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0013_UI_BOT_006.html" target="_blank">./page/0013_UI_BOT_006.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.16]</td>
+          </tr>
+          <tr class="end">
+            <td>0014_UI_BOT_007_입출금 조회 구분</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0014_UI_BOT_007.html" target="_blank">./page/0014_UI_BOT_007.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.16]</td>
+          </tr>
+          <tr class="end">
+            <td>0015_UI_BOT_008_사용자 인증 주민6, 사업자10 계좌, 계좌비번, 카드, 카드비번</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0015_UI_BOT_008.html" target="_blank">./page/0015_UI_BOT_008.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.16]</td>
+          </tr>
+          <tr class="end">
+            <td>0016_UI_BOT_010_전화 송금 비밀번호 인증</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0016_UI_BOT_010.html" target="_blank">./page/0016_UI_BOT_010.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.16]</td>
+          </tr>
+      
+          <tr class="end">
+            <td colspan="6">■ 서류안내</td>
+          </tr>
+          <tr class="end">
+            <td>0017_UI_BOT_011_서류안내_대분류</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0017_UI_BOT_011.html" target="_blank">./page/0017_UI_BOT_011.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.17]</td>
+          </tr>
+          <tr class="end">
+            <td>0018_UI_BOT_012_서류안내_중분류</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0018_UI_BOT_012.html" target="_blank">./page/0018_UI_BOT_012.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.17]</td>
+          </tr>
+          <tr class="end">
+            <td>0019_UI_BOT_013_서류안내_소분류</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0019_UI_BOT_013.html" target="_blank">./page/0019_UI_BOT_013.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.17]</td>
+          </tr>
+          <tr class="end">
+            <td>0020_UI_BOT_014_서류안내_서류 안내 화면</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0020_UI_BOT_014.html" target="_blank">./page/0020_UI_BOT_014.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.17]</td>
+          </tr>
+          <tr class="end">
+            <td>0021_UI_BOT_015_서류안내_서류 안내 화면2</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0021_UI_BOT_015.html" target="_blank">./page/0021_UI_BOT_015.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.17]</td>
+          </tr>
+
+          <tr class="end">
+            <td colspan="6">■ 팩스서비스</td>
+          </tr>
+          <tr class="end">
+            <td>0022_UI_BOT_016_팩스서비스 대분류</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0022_UI_BOT_016.html" target="_blank">./page/0022_UI_BOT_016.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.18]</td>
+          </tr>
+          <tr class="end">
+            <td>0023_UI_BOT_017_팩스 예금 거래 내역 조회</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0023_UI_BOT_017.html" target="_blank">./page/0023_UI_BOT_017.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.04.02]</td>
+          </tr>
+          <tr class="end">
+            <td>0024_UI_BOT_018_팩스 번호 입력</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0024_UI_BOT_018.html" target="_blank">./page/0024_UI_BOT_018.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.18]</td>
+          </tr>
+          <tr class="end">
+            <td>0024_UI_BOT_018_팩스 번호 입력_확인팝업</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0024_UI_BOT_018_01.html" target="_blank">./page/0024_UI_BOT_018_01.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.18]</td>
+          </tr>
+          <tr class="end">
+            <td>0025_UI_BOT_019_팩스 예금 거래 내역 전송 결과</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0025_UI_BOT_019.html" target="_blank">./page/0025_UI_BOT_019.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.18]</td>
+          </tr>
+          <tr class="end">
+            <td>0026_UI_BOT_020_팩스 대출 계좌 선택</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0026_UI_BOT_020.html" target="_blank">./page/0026_UI_BOT_020.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.18]</td>
+          </tr>
+          <tr class="end">
+            <td>0027_UI_BOT_021_팩스 대출 거래 내역 조회</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0027_UI_BOT_021.html" target="_blank">./page/0027_UI_BOT_021.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.04.02]</td>
+          </tr>
+          <tr class="end">
+            <td>0028_UI_BOT_022_팩스 연체완납 확인서 조회_01</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0028_UI_BOT_022_01.html" target="_blank">./page/0028_UI_BOT_022_01.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.18]</td>
+          </tr>
+          <tr class="end">
+            <td>0028_UI_BOT_022_팩스 연체완납 확인서 조회_02</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0028_UI_BOT_022_02.html" target="_blank">./page/0028_UI_BOT_022_02.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.18]</td>
+          </tr>
+          
+          
+          <tr class="end">
+            <td colspan="6">■ 예금잔액조회</td>
+          </tr>
+          <tr class="end">
+            <td>0029_UI_BOT_023_예금 잔액 조회 결과_01</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0029_UI_BOT_023_01.html" target="_blank">./page/0029_UI_BOT_023_01.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.19]</td>
+          </tr>
+          <tr class="end">
+            <td>0029_UI_BOT_023_예금 잔액 조회 결과_02_다른업무</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0029_UI_BOT_023_02.html" target="_blank">./page/0029_UI_BOT_023_02.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.19]</td>
+          </tr>
+          
+          
+          <tr class="end">
+            <td colspan="6">■ 예금거래내역</td>
+          </tr>
+          <tr class="end">
+            <td>0030_UI_BOT_024_예금 거래 내역 조회</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0030_UI_BOT_024.html" target="_blank">./page/0030_UI_BOT_024.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.04.02]</td>
+          </tr>
+          <tr class="end">
+            <td>0030_UI_BOT_024_예금 거래 내역 조회_모바일뱅킹 연결 팝업</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/9999_UI_BOT_999.html" target="_blank">./page/9999_UI_BOT_999.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.19]</td>
+          </tr>
+          
+          
+          <tr class="end">
+            <td colspan="6">■ 해지예상액 조회</td>
+          </tr>
+          <tr class="end">
+            <td>0031_UI_BOT_025_해지 예정일 입력</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0031_UI_BOT_025.html" target="_blank">./page/0031_UI_BOT_025.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.23]</td>
+          </tr>
+          <tr class="end">
+            <td>0032_UI_BOT_026_적립 거치식 해지 예상액 조회</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0032_UI_BOT_026.html" target="_blank">./page/0032_UI_BOT_026.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.23]</td>
+          </tr>
+          <tr class="end">
+            <td>0033_UI_BOT_026_1_적립 거치식 해지 예상액 조회2</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0033_UI_BOT_026_01.html" target="_blank">./page/0033_UI_BOT_026_01.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.23]</td>
+          </tr>
+          
+          
+          <tr class="end">
+            <td colspan="6">■ 대출잔액조회</td>
+          </tr>
+          <tr class="end">
+            <td>0034_UI_BOT_027_대출계좌선택</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0034_UI_BOT_027.html" target="_blank">./page/0034_UI_BOT_027.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.23]</td>
+          </tr>
+          <tr class="end">
+            <td>0035_UI_BOT_028_대출잔액조회</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0035_UI_BOT_028.html" target="_blank">./page/0035_UI_BOT_028.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.23]</td>
+          </tr>
+          
+          
+          <tr class="end">
+            <td colspan="6">■ 대출 거래내역 조회</td>
+          </tr>
+          <tr class="end">
+            <td>0036_UI_BOT_029_대출 거래 내역 조회</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0036_UI_BOT_029.html" target="_blank">./page/0036_UI_BOT_029.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.04.02]</td>
+          </tr>
+          
+          
+          <tr class="end">
+            <td colspan="6">■ 대출 원리금 상환 조회</td>
+          </tr>
+          <tr class="end">
+            <td>0037_UI_BOT_030_상환구분선택</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0037_UI_BOT_030.html" target="_blank">./page/0037_UI_BOT_030.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.23]</td>
+          </tr>
+          <tr class="end">
+            <td>0038_UI_BOT_031_대출 원리금 상환 조회</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0038_UI_BOT_031.html" target="_blank">./page/0038_UI_BOT_031.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.23]</td>
+          </tr>
+          
+          
+          <tr class="end">
+            <td colspan="6">■ 대출가상계좌 조회</td>
+          </tr>
+          <tr class="end">
+            <td>0039_UI_BOT_032_대출가상계좌 조회 결과</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0039_UI_BOT_032.html" target="_blank">./page/0039_UI_BOT_032.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.04.02]</td>
+          </tr>
+          <tr class="end">
+            <td>0039_UI_BOT_032_대출가상계좌 조회 결과_모바일뱅킹 연결 팝업</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/9999_UI_BOT_999.html" target="_blank">./page/9999_UI_BOT_999.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.19]</td>
+          </tr>
+          
+          
+          <tr class="end">
+            <td colspan="6">■ 카드 결제 예정금액 조회</td>
+          </tr>
+          <tr class="end">
+            <td>0040_UI_BOT_033_상환구분선택</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <<td class="url"><a href="./page/0040_UI_BOT_033.html" target="_blank">./page/0040_UI_BOT_033.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.23]</td>
+          </tr>
+          <tr class="end">
+            <td>0040_UI_BOT_033_상환구분선택_모바일뱅킹 연결 팝업</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/9999_UI_BOT_999.html" target="_blank">./page/9999_UI_BOT_999.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.19]</td>
+          </tr>
+          
+          
+          <tr class="end">
+            <td colspan="6">■ 연체금액 조회</td>
+          </tr>
+          <tr class="end">
+            <td>0041_UI_BOT_034_연체금액 조회 결과</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0041_UI_BOT_034.html" target="_blank">./page/0041_UI_BOT_034.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.23]</td>
+          </tr>
+          <tr class="end">
+            <td>0041_UI_BOT_034_연체금액 조회 결과_모바일뱅킹 연결 팝업</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/9999_UI_BOT_999.html" target="_blank">./page/9999_UI_BOT_999.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.19]</td>
+          </tr>
+          
+          
+          <tr class="end">
+            <td colspan="6">■ 카드 사용 가능액 조회</td>
+          </tr>
+          <tr class="end">
+            <td>0042_UI_BOT_035_카드 사용 가능액 조회 결과</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0042_UI_BOT_035.html" target="_blank">./page/0042_UI_BOT_035.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.23]</td>
+          </tr>
+          <tr class="end">
+            <td>0042_UI_BOT_035_카드 사용 가능액 조회 결과_모바일뱅킹 연결 팝업</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/9999_UI_BOT_999.html" target="_blank">./page/9999_UI_BOT_999.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.19]</td>
+          </tr>
+          
+          
+          <tr class="end">
+            <td colspan="6">■ 카드 이용 내역 조회</td>
+          </tr>
+          <tr class="end">
+            <td>0043_UI_BOT_036_카드 이용 내역 결과</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0043_UI_BOT_036.html" target="_blank">./page/0043_UI_BOT_036.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.04.02]</td>
+          </tr>
+          <tr class="end">
+            <td>0043_UI_BOT_036_카드 이용 내역 결과_모바일뱅킹 연결 팝업</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/9999_UI_BOT_999.html" target="_blank">./page/9999_UI_BOT_999.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.19]</td>
+          </tr>
+          
+          
+          <tr class="end">
+            <td colspan="6">■ 카드 선결제</td>
+          </tr>
+          <tr class="end">
+            <td>0044_UI_BOT_037_결제 계좌 비밀번호</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0044_UI_BOT_037.html" target="_blank">./page/0044_UI_BOT_037.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.23]</td>
+          </tr>
+          <tr class="end">
+            <td>0045_UI_BOT_038_카드 선결제 내용 확인</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0045_UI_BOT_038.html" target="_blank">./page/0045_UI_BOT_038.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.23]</td>
+          </tr>
+          <tr class="end">
+            <td>0046_UI_BOT_039_카드 선결제 결과</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0046_UI_BOT_039.html" target="_blank">./page/0046_UI_BOT_039.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.23]</td>
+          </tr>
+          <tr class="end">
+            <td>0046_UI_BOT_039_카드 선결제 결과_모바일뱅킹 연결 팝업</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/9999_UI_BOT_999.html" target="_blank">./page/9999_UI_BOT_999.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.19]</td>
+          </tr>
+          
+          
+          <tr class="end">
+            <td colspan="6">■ 카드 가상 계좌 조회</td>
+          </tr>
+          <tr class="end">
+            <td>0047_UI_BOT_040_카드 가상 계좌 조회 결과</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0047_UI_BOT_040.html" target="_blank">./page/0047_UI_BOT_040.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.23]</td>
+          </tr>
+          <tr class="end">
+            <td>0047_UI_BOT_040_카드 가상 계좌 조회 결과_모바일뱅킹 연결 팝업</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/9999_UI_BOT_999.html" target="_blank">./page/9999_UI_BOT_999.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.19]</td>
+          </tr>
+          
+          
+          <tr class="end">
+            <td colspan="6">■ 통장 분실신고</td>
+          </tr>
+          <tr class="end">
+            <td>0048_UI_BOT_041_통장 분실신고 내용 확인</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0048_UI_BOT_041.html" target="_blank">./page/0048_UI_BOT_041.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.23]</td>
+          </tr>
+          <tr class="end">
+            <td>0049_UI_BOT_042_통장 분실신고 결과 확인</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0049_UI_BOT_042.html" target="_blank">./page/0049_UI_BOT_042.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.23]</td>
+          </tr>
+          <tr class="end">
+            <td>0049_UI_BOT_042_통장 분실신고 결과 확인_모바일뱅킹 연결 팝업</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/9999_UI_BOT_999.html" target="_blank">./page/9999_UI_BOT_999.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.19]</td>
+          </tr>
+          
+          
+          <tr class="end">
+            <td colspan="6">■ 자동이체</td>
+          </tr>
+          <tr class="end">
+            <td>0050_UI_BOT_043_자동이체 사용자 정보 입력</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0050_UI_BOT_043.html" target="_blank">./page/0050_UI_BOT_043.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.19]</td>
+          </tr>
+          <tr class="end">
+            <td>0051_UI_BOT_044_OTP비밀번호 입력</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0051_UI_BOT_044_01.html" target="_blank">./page/0051_UI_BOT_044_01.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.19]</td>
+          </tr>
+          <tr class="end">
+            <td>0051_UI_BOT_044_OTP비밀번호 오류</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0051_UI_BOT_044_02.html" target="_blank">./page/0051_UI_BOT_044_02.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.19]</td>
+          </tr>
+          <tr class="end">
+            <td>0051_UI_BOT_044_OTP비밀번호 취소팝업</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0051_UI_BOT_044_03.html" target="_blank">./page/0051_UI_BOT_044_03.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.19]</td>
+          </tr>
+          <tr class="end">
+            <td>0052_UI_BOT_045_보안카드번호 입력</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0052_UI_BOT_045_01.html" target="_blank">./page/0052_UI_BOT_045_01.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.19]</td>
+          </tr>
+          <tr class="end">
+            <td>0052_UI_BOT_045 보안카드번호 취소팝업</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0052_UI_BOT_045_02.html" target="_blank">./page/0052_UI_BOT_045_02.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.19]</td>
+          </tr>
+          <tr class="end">
+            <td>0053_UI_BOT_046_자동이체 출금계좌선택</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0053_UI_BOT_046.html" target="_blank">./page/0053_UI_BOT_046.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.19]</td>
+          </tr>
+          <tr class="end">
+            <td>0054_UI_BOT_047_자동이체 수취인 정보 입력_부산은행</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0054_UI_BOT_047_01.html" target="_blank">./page/0053_UI_BOT_047_01.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.23]</td>
+          </tr>
+          <tr class="end">
+            <td>0054_UI_BOT_047_자동이체 수취인 정보 입력_다른은행</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0054_UI_BOT_047_02.html" target="_blank">./page/0053_UI_BOT_047_02.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.23]</td>
+          </tr>
+          <tr class="end">
+            <td>0055_UI_BOT_048_자동이체 등록 확인</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0055_UI_BOT_048.html" target="_blank">./page/0055_UI_BOT_048.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.19]</td>
+          </tr>
+          <tr class="end">
+            <td>0056_UI_BOT_049_자동이체 등록 결과</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0056_UI_BOT_049.html" target="_blank">./page/0056_UI_BOT_049.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.19]</td>
+          </tr>
+          
+          
+          <tr class="end">
+            <td colspan="6">■ 자동이체 조회/해제</td>
+          </tr>
+          <tr class="end">
+            <td>0057_UI_BOT_050_자동이체 조회/해제 계좌선택</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0057_UI_BOT_050.html" target="_blank">./page/0057_UI_BOT_050.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.20]</td>
+          </tr>
+          <tr class="end">
+            <td>0058_UI_BOT_051_자동이체 조회/해제 확인</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0058_UI_BOT_051.html" target="_blank">./page/0058_UI_BOT_051.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.20]</td>
+          </tr>
+          <tr class="end">
+            <td>0059_UI_BOT_052_자동이체 조회/해제 결과</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0059_UI_BOT_052.html" target="_blank">./page/0059_UI_BOT_052.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.20]</td>
+          </tr>
+          
+          
+          <tr class="end">
+            <td colspan="6">■ 자기앞수표 조회</td>
+          </tr>
+          <tr class="end">
+            <td>0060_UI_BOT_053_자기앞 수표 정보입력</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0060_UI_BOT_053.html" target="_blank">./page/0060_UI_BOT_053.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.20]</td>
+          </tr>
+          <tr class="end">
+            <td>0061_UI_BOT_054_자기앞 수표 조회확인</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0061_UI_BOT_054.html" target="_blank">./page/0061_UI_BOT_054.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.20]</td>
+          </tr>
+          <tr class="end">
+            <td>0062_UI_BOT_055_자기앞 수표 조회결과</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0062_UI_BOT_055.html" target="_blank">./page/0062_UI_BOT_055.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.20]</td>
+          </tr>
+          <tr class="end">
+            <td>0062_UI_BOT_055_자기앞 수표 조회결과_오류</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0062_UI_BOT_055_01.html" target="_blank">./page/0062_UI_BOT_055_01.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.20]</td>
+          </tr>
+          
+          
+          <tr class="end">
+            <td colspan="6">■ 펀드평가액 및 수익률 조회</td>
+          </tr>
+          <tr class="end">
+            <td>0063_UI_BOT_056_펀드 평가액 및 수익률 조회</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0063_UI_BOT_056.html" target="_blank">./page/0063_UI_BOT_056.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.20]</td>
+          </tr>
+          <tr class="end">
+            <td>0063_UI_BOT_056_펀드 평가액 및 수익률 조회_점검중</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0071_UI_BOT_064_01.html" target="_blank">./page/0071_UI_BOT_064_01.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.20]</td>
+          </tr>
+          <tr class="end">
+            <td>0063_UI_BOT_056_펀드 평가액 및 수익률 조회_페이지오류</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0071_UI_BOT_064_02.html" target="_blank">./page/0071_UI_BOT_064_02.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.20]</td>
+          </tr>
+          <tr class="end">
+            <td>0063_UI_BOT_056_펀드 평가액 및 수익률 조회_계좌오류</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0071_UI_BOT_064_03.html" target="_blank">./page/0071_UI_BOT_064_03.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.20]</td>
+          </tr>    
+          
+          <tr class="end">
+            <td colspan="6">■ 외환 환율조회</td>
+          </tr>
+          <tr class="end">
+            <td>0064_UI_BOT_057_환율 통화선택</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0064_UI_BOT_057.html" target="_blank">./page/0064_UI_BOT_057.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.20]</td>
+          </tr>
+          <tr class="end">
+            <td>0065_UI_BOT_058_외화 환율 조회 결과</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0065_UI_BOT_058.html" target="_blank">./page/0065_UI_BOT_058.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.20]</td>
+          </tr>
+          <tr class="end">
+            <td>0065_UI_BOT_058_외화 환율 조회 결과_모바일뱅킹 연결 팝업</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/9999_UI_BOT_999.html" target="_blank">./page/9999_UI_BOT_999.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.19]</td>
+          </tr>
+          
+          
+          <tr class="end">
+            <td colspan="6">■ 인증서등록 및 폐기</td>
+          </tr>
+          <tr class="end">
+            <td>0066_UI_BOT_059_인증서 종류선택</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0066_UI_BOT_059.html" target="_blank">./page/0066_UI_BOT_059.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.20]</td>
+          </tr>
+          
+          
+          <tr class="end">
+            <td colspan="6">■ 연말정산</td>
+          </tr>
+          <tr class="end">
+            <td>0067_UI_BOT_060_연말정산 안내 화면</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0067_UI_BOT_060.html" target="_blank">./page/0067_UI_BOT_060.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.20]</td>
+          </tr>
+          
+
+          <tr class="end">
+            <td colspan="6">■ 공통화면</td>
+          </tr>
+          <tr class="end">
+            <td>9901_UI_BOT_061_(공통)약관 동의</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0068_UI_BOT_061_01.html" target="_blank">./page/0068_UI_BOT_061_01.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.20]</td>
+          </tr>
+          <tr class="end">
+            <td>9901_UI_BOT_061_(공통)약관 동의_상세_1개</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0068_UI_BOT_061_02.html" target="_blank">./page/0068_UI_BOT_061_02.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.04.01]</td>
+          </tr>
+          <tr class="end">
+            <td>9901_UI_BOT_061_(공통)약관 동의_상세_여러개</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0068_UI_BOT_061_03.html" target="_blank">./page/0068_UI_BOT_061_03.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.04.01]</td>
+          </tr>
+          <tr class="end">
+            <td>9902_UI_BOT_062_휴대폰 명의 인증</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0069_UI_BOT_062.html" target="_blank">./page/0069_UI_BOT_062.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.20]</td>
+          </tr>
+          <tr class="end">
+            <td>9902_UI_BOT_063_휴대폰 명의 인증_재발송</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0069_UI_BOT_063.html" target="_blank">./page/0069_UI_BOT_063.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.20]</td>
+          </tr>
+          <tr class="end">
+            <td>9903_UI_BOT_064_안내 화면1_점검중</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0071_UI_BOT_064_01.html" target="_blank">./page/0071_UI_BOT_064_01.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.20]</td>
+          </tr>
+          <tr class="end">
+            <td>9903_UI_BOT_064_안내 화면1_페이지오류</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0071_UI_BOT_064_02.html" target="_blank">./page/0071_UI_BOT_064_02.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.20]</td>
+          </tr>
+          <tr class="end">
+            <td>9903_UI_BOT_064_안내 화면1_계좌오류</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0071_UI_BOT_064_03.html" target="_blank">./page/0071_UI_BOT_064_03.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.20]</td>
+          </tr>
+          <tr class="end">
+            <td>9904_UI_BOT_065_안내 화면2</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/0072_UI_BOT_065.html" target="_blank">./page/0072_UI_BOT_065.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.20]</td>
+          </tr>
+          <tr class="end">
+            <td>9999_UI_BOT_991_모바일뱅킹 연결 팝업</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/9999_UI_BOT_999.html" target="_blank">./page/9999_UI_BOT_999.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.19]</td>
+          </tr>
+          <tr class="end">
+            <td>9999_UI_BOT_992_로딩</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/9999_UI_BOT_998.html" target="_blank">./page/9999_UI_BOT_998.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.25]</td>
+          </tr>
+          <tr class="end">
+            <td>9999_UI_BOT_993_에러메시지</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/9999_UI_BOT_997.html" target="_blank">./page/9999_UI_BOT_997.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.26]</td>
+          </tr>
+          
+          <tr class="end">
+            <td colspan="6" style="height:20px"></td>
+          </tr>
+          <tr class="end">
+            <td>컴포넌트</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="url"><a href="./page/components.html" target="_blank">./page/components.html</a></td>
+            <td>○</td>
+            <td>디자인 및 퍼블리싱 완료 [2026.03.24]</td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    <!-- //contents -->
+  </div>
+  <!-- //container -->
+</body>
+
+</html>

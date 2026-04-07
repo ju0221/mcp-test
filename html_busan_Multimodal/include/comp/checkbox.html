@@ -1,0 +1,57 @@
+                
+<div id="checkbox" class="ex-wrap-row">
+    <div class="ex-wrap full">
+        <h2 class="ex-tit">Checkbox</h2>
+
+        <div class="ex-row">
+            <div class="chk-group">
+                <input type="checkbox" id="chk2_all" class="chk-all" title="체크박스">
+            </div>
+        </div>
+
+        <div class="ex-row">
+            <div class="chk-group">
+                <input type="checkbox" class="chk-sub" title="체크박스">
+            </div>
+        </div>
+
+        <div class="ex-row">
+            <div class="agree-group" data-module="accordion-agree">
+                <div class="agree-item js-acc-item">
+                    <div class="agree-header">
+                        <div class="chk-group">
+                            <input type="checkbox" id="chk1_all" class="chk-all">
+                            <label for="chk1_all" class="chk-label">멀티모달 서비스 이용을 위한 약관</label>
+                        </div>
+                        <button type="button" class="btn-toggle" aria-expanded="false" aria-controls="content1">
+                            <span class="blind">열기</span>
+                        </button>
+                    </div>
+                    <div id="content1" class="agree-content" hidden>
+                        <ul class="sub-agree-list">
+                            <li>
+                                <div class="chk-group">
+                                    <input type="checkbox" id="chk1_sub1" class="chk-sub">
+                                    <label for="chk1_sub1" class="chk-label-sub">[필수] 전자금융거래기본약관</label>
+                                </div>
+                                <button type="button" class="btn-link"><span class="blind">보기</span></button>
+                            </li>
+                            <li>
+                                <div class="chk-group">
+                                    <input type="checkbox" id="chk1_sub2" class="chk-sub">
+                                    <label for="chk1_sub2" class="chk-label-sub">[필수] AI보이스봇 멀티모달 본인확인</label>
+                                </div>
+                                <button type="button" class="btn-link"><span class="blind">보기</span></button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const agreeModules = document.querySelectorAll('[data-module="accordion-agree"]');
+    agreeModules.forEach(module => new AccordionAgree(module));
+</script>
